@@ -12,7 +12,7 @@ const GildedRoseContext = createContext<GildedRoseContextType | undefined>(
 );
 
 // Custom hook to access the context
-export const useGildedRose = () => {
+export const useGildedRoseContext = () => {
  const context = useContext(GildedRoseContext);
  if (!context) {
   throw new Error('useGildedRose must be used within a GildedRoseProvider');
@@ -21,14 +21,14 @@ export const useGildedRose = () => {
 };
 
 // GildedRoseProvider component
-export const GildedRoseProvider = ({
+export const GildedRoseContextProvider = ({
  children,
 }: {
  children: React.ReactNode;
 }) => {
  const initialItems: Item[] = [
   new Item('Normal Item', 10, 20),
-  new Item('Aged Brie', 2, 0),
+  new Item('Aged Brie', 2, 2),
   new Item('Backstage passes to a TAFKAL80ETC concert', 5, 15),
  ];
 

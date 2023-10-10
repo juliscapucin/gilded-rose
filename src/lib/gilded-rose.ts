@@ -69,9 +69,9 @@ export class GildedRose {
 
    updateQuality() {
       // Filter out items with quality 0
-      const itemsToUpdate = this.items.filter((item) => item.quality > 0);
+      // const itemsToUpdate = this.items.filter((item) => item.quality > 0);
 
-      itemsToUpdate.map((item) => {
+      this.items.map((item) => {
          // Decrease sellIn for all items except Sulfuras
          if (item.name !== 'Sulfuras, Hand of Ragnaros') {
             item.sellIn -= 1;
@@ -127,6 +127,6 @@ export class GildedRose {
          }
       });
 
-      return itemsToUpdate;
+      return this.items;
    }
 }

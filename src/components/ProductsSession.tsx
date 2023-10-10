@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { ProductCard } from '@/components';
 
+import { useGildedRoseContext } from '@/context';
+
 const Container = styled.section`
  display: grid;
  grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -10,9 +12,13 @@ const Container = styled.section`
 `;
 
 export default function ProductsSession() {
+ const { items, updateQuality } = useGildedRoseContext();
+
  return (
   <Container>
-   <ProductCard />
+   {items.map((item, index) => {
+    return <ProductCard item={item} key={`product-card-${index}`} />;
+   })}
   </Container>
  );
 }
