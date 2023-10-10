@@ -1,22 +1,11 @@
 'use client';
 
-import { styled } from 'styled-components';
-import { Grid, Paragraph } from '@/components/styles';
-
-const Container = styled.section`
- grid-column: 7 / span 5;
- margin-top: 300px;
-
- h1 {
-  font-size: var(--text-display);
-  margin-bottom: calc(var(--global-spacing) * 3);
- }
-`;
+import { Grid, PageContainer, Paragraph } from '@/components/styles';
 
 export default function page() {
  return (
   <Grid>
-   <Container>
+   <PageContainer>
     <h1>About Gilded Rose</h1>
     <Paragraph>
      Gilded Rose is not just a shop; it's an experience. Located in the heart of
@@ -46,7 +35,7 @@ export default function page() {
      a destination for those who appreciate the finer things in life. Visit us
      today, and let your shopping adventure begin!
     </Paragraph>
-   </Container>
+   </PageContainer>
   </Grid>
  );
 }

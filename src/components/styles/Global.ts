@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
    --text-medium: 16px;
    --text-small: 14px;
    --text-tiny: 12px;
-   
+
    --font-weight-ultra-light: 100;
    --font-weight-light: 200;
    --font-weight-regular: 300;
@@ -43,9 +43,9 @@ const GlobalStyles = createGlobalStyle`
 
 @media screen and (max-width: 480px) {
    :root {
-      --text-display: 32px;
-      --text-headline: 24px;
-      --text-subtitle: 18px;
+      --text-display: 42px;
+      --text-headline: 32px;
+      --text-subtitle: 22px;
    }
 }
 

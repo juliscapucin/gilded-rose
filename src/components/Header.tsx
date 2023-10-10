@@ -35,10 +35,10 @@ export default function Header() {
   <StyledHeader>
    <h1>G--R</h1>
    <Navigation>
-    <Link href='/'>Home</Link>
     <Link href='/'>Products</Link>
+    <Link href='/'>Sale</Link>
     <Link href='/about'>About</Link>
-    <Link href='/contact'>Contact</Link>
+    <Link href='/contact'>Contact Us</Link>
    </Navigation>
   </StyledHeader>
  );
