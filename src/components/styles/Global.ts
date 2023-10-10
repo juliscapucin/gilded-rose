@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://use.typekit.net/cbg5juo.css');
-
-/* $ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); */
-
 :root {
    --max-width: 2000px;
    --border-radius: 12px;
@@ -12,13 +8,15 @@ const GlobalStyles = createGlobalStyle`
    --font-secondary: 'ff-real-text-pro', sans-serif;
    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
    --global-spacing: 8px;
-   --display: 57px;
-   --headline: 28px;
-   --title: 22px;
+   --header-height: 80px;
+   --text-display: 91px;
+   --text-headline: 57px;
+   --text-subtitle: 36px;
    --text-large: 18px;
    --text-medium: 16px;
    --text-small: 14px;
    --text-tiny: 12px;
+   --font-weight-ultra-light: 100;
    --font-weight-light: 200;
    --font-weight-regular: 300;
    --font-weight-medium: 500;
@@ -28,9 +26,9 @@ const GlobalStyles = createGlobalStyle`
 /* Change values for smaller screens */
 @media screen and (max-width: 480px) {
    :root {
-      --display: 32px;
-      --headline: 24px;
-      --title: 18px;
+      --text-display: 32px;
+      --text-headline: 24px;
+      --text-subtitle: 18px;
    }
 }
 
@@ -50,7 +48,8 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
    font-family: var(--font-primary);
-   font-weight: var(--font-weight-light);
+   font-weight: var(--font-weight-ultra-light);
+   line-height: 0.9;
 }
 
 a {

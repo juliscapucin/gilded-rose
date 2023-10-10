@@ -4,11 +4,12 @@ import { ProductCard } from '@/components';
 import { useGildedRoseContext } from '@/context';
 
 const Container = styled.section`
- display: grid;
- grid-template-columns: repeat(3, minmax(0, 1fr));
- gap: 1.5rem /* 24px */;
+ display: flex;
+ flex-direction: column;
+ gap: calc(var(--global-spacing) * 3);
+ margin-top: calc(var(--global-spacing) * 3);
  background-color: var(--color-primary);
- min-height: 100vh;
+ grid-column: 8 / span 5;
 `;
 
 export default function ProductsSession() {

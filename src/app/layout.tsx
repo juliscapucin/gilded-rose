@@ -2,7 +2,7 @@
 
 import StyledComponentsRegistry from '@/lib/styles-registry';
 import styled, { ThemeProvider } from 'styled-components';
-import { Header } from '@/components';
+import { Header, Meta } from '@/components';
 import { GlobalStyles } from '@/components/styles';
 
 const themeDark = {
@@ -24,6 +24,11 @@ const StyledBody = styled.body`
  color: ${({ theme }) => theme.colors.secondary};
 `;
 
+const StyledMain = styled.main`
+ padding: 0 calc(var(--global-spacing) * 3) calc(var(--global-spacing) * 3)
+  calc(var(--global-spacing) * 3);
+`;
+
 export default function RootLayout({
  children,
 }: {
@@ -31,12 +36,13 @@ export default function RootLayout({
 }) {
  return (
   <html>
+   <Meta />
    <StyledComponentsRegistry>
     <GlobalStyles />
     <ThemeProvider theme={themeDark}>
      <StyledBody>
       <Header />
-      {children}
+      <StyledMain>{children}</StyledMain>
      </StyledBody>
     </ThemeProvider>
    </StyledComponentsRegistry>

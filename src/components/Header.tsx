@@ -4,7 +4,12 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
- padding: calc(var(--global-spacing) * 3);
+ position: fixed;
+ top: 0;
+ left: 0;
+ height: var(--header-height);
+ width: 50%;
+ padding: 0 calc(var(--global-spacing) * 3);
  display: flex;
  justify-content: space-between;
  align-items: center;
