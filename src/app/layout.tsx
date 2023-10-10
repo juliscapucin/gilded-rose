@@ -2,23 +2,27 @@
 
 import StyledComponentsRegistry from '@/lib/styles-registry';
 import styled, { ThemeProvider } from 'styled-components';
-import theme from 'styled-theming';
-import Header from '@/components/Header';
+import { Header } from '@/components';
+import { GlobalStyles } from '@/components/styles';
 
-const themes = {
- dark: {
-  colors: {
-   primary: '#0070f3',
-   secondary: '#ff00ff',
-  },
- },
- light: {
-  colors: {
-   primary: '#0070f3',
-   secondary: '#ff00ff',
-  },
+const themeDark = {
+ colors: {
+  primary: '#2b0808',
+  secondary: '#f16000',
  },
 };
+
+const themeLight = {
+ colors: {
+  primary: '#c39999',
+  secondary: '#c30000',
+ },
+};
+
+const StyledBody = styled.body`
+ background-color: ${({ theme }) => theme.colors.primary};
+ color: ${({ theme }) => theme.colors.secondary};
+`;
 
 export default function RootLayout({
  children,
@@ -28,11 +32,12 @@ export default function RootLayout({
  return (
   <html>
    <StyledComponentsRegistry>
-    <ThemeProvider theme={themes.dark}>
-     <body>
+    <GlobalStyles />
+    <ThemeProvider theme={themeDark}>
+     <StyledBody>
       <Header />
       {children}
-     </body>
+     </StyledBody>
     </ThemeProvider>
    </StyledComponentsRegistry>
   </html>

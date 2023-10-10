@@ -1,4 +1,5 @@
+import Header from './Header';
 import ProductCard from './ProductCard';
 import ProductsSession from './ProductsSession';
 
-export { ProductsSession, ProductCard };
+export { Header, ProductsSession, ProductCard };

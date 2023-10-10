@@ -8,6 +8,7 @@ import { GildedRoseContextProvider } from '@/context';
 const Container = styled.main`
  background-color: var(--color-primary);
  min-height: 100vh;
+ padding: calc(var(--global-spacing) * 3);
 `;
 
 export default function Home() {
