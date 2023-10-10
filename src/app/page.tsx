@@ -4,22 +4,22 @@ import styled from 'styled-components';
 
 import { ProductsSession } from '@/components';
 import { GildedRoseContextProvider } from '@/context';
-
-const Container = styled.section`
- min-height: 100vh;
- display: grid;
- grid-template-columns: repeat(12, 1fr);
-`;
+import { Grid } from '@/components/styles';
 
 const StyledHero = styled.section`
- position: fixed;
- top: 200px;
- left: calc(var(--global-spacing) * 3);
- width: 50%;
+ margin-top: var(--big-margin);
+
+ @media (min-width: 768px) {
+  position: fixed;
+  top: var(--big-margin);
+  left: calc(var(--global-spacing) * 3);
+  width: 50%;
+  margin-top: 0;
+ }
 
  h1 {
   font-size: var(--text-display);
-  margin-bottom: calc(var(--global-spacing) * 2);
+  margin-bottom: calc(var(--global-spacing) * 3);
  }
 
  p {
@@ -29,7 +29,7 @@ const StyledHero = styled.section`
 
 export default function Home() {
  return (
-  <Container>
+  <Grid>
    <StyledHero>
     <h1>Welcome to Gilded Rose.</h1>
     <p>
@@ -41,6 +41,6 @@ export default function Home() {
    <GildedRoseContextProvider>
     <ProductsSession />
    </GildedRoseContextProvider>
-  </Container>
+  </Grid>
  );
 }

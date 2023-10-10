@@ -3,27 +3,44 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
    --max-width: 2000px;
+   --breakpoint-mobile: 480px;
+   --breakpoint-tablet: 768px;
+   --breakpoint-desktop: 1024px;
+
    --border-radius: 12px;
+
    --font-primary: 'ff-real-headline-pro', sans-serif;
    --font-secondary: 'ff-real-text-pro', sans-serif;
+
    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
    --global-spacing: 8px;
    --header-height: 80px;
+   --big-margin: 200px;
+
    --text-display: 91px;
    --text-headline: 57px;
    --text-subtitle: 36px;
+
    --text-large: 18px;
    --text-medium: 16px;
    --text-small: 14px;
    --text-tiny: 12px;
+   
    --font-weight-ultra-light: 100;
    --font-weight-light: 200;
    --font-weight-regular: 300;
    --font-weight-medium: 500;
    --font-weight-bold: 700;
 }
+@media screen and (max-width: 768px) {
+  :root {
+      --text-display: 64px;
+      --text-headline: 42px;
+      --text-subtitle: 32px;
+   }
+}
 
-/* Change values for smaller screens */
 @media screen and (max-width: 480px) {
    :root {
       --text-display: 32px;
