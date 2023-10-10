@@ -1,3 +1,4 @@
-import ProductsSession from "./ProductsSession";
+import ProductCard from './ProductCard';
+import ProductsSession from './ProductsSession';
 
-export { ProductsSession };
+export { ProductsSession, ProductCard };

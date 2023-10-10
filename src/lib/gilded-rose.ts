@@ -84,24 +84,28 @@ export class GildedRose {
                break;
 
             case 'Conjured':
-               if (item.sellIn > 0) {
+               if (item.quality >= 2) {
                   item.quality -= 2;
+               } else {
+                  item.quality = 0;
                }
                break;
 
             case 'Aged Brie':
-               if (item.quality <= 50) {
+               if (item.quality < 50) {
                   item.quality += 1;
                }
                break;
 
             case 'Backstage passes to a TAFKAL80ETC concert':
-               if (item.quality <= 50) {
-                  item.quality += 1;
-                  if (item.sellIn <= 10 && item.quality < 50) {
+               if (item.quality < 50) {
+                  if (item.sellIn > 10) {
+                     item.quality += 1;
+                  }
+                  if (item.sellIn <= 10 && item.sellIn > 5) {
                      item.quality += 2;
                   }
-                  if (item.sellIn <= 5 && item.quality < 50) {
+                  if (item.sellIn <= 5) {
                      item.quality += 3;
                   }
                }
@@ -111,11 +115,13 @@ export class GildedRose {
                break;
 
             default:
-               if (item.quality > 0 && item.sellIn > 0) {
+               if (item.quality > 0 && item.sellIn >= 0) {
                   item.quality -= 1;
                }
-               if (item.sellIn < 0) {
+               if (item.sellIn < 0 && item.quality > 2) {
                   item.quality -= 2;
+               } else if (item.sellIn < 0 && item.quality <= 2) {
+                  item.quality = 0;
                }
                break;
          }
