@@ -1,28 +1,40 @@
-import StyledComponentsRegistry from '@/lib/registry'
-import {ThemeProvider} from 'styled-components'
-import Header from '@/components/Header'
+'use client';
 
-const theme = {
+import StyledComponentsRegistry from '@/lib/styles-registry';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from 'styled-theming';
+import Header from '@/components/Header';
+
+const themes = {
+ dark: {
   colors: {
-    primary: '#0070f3',
-    secondary: '#ff00ff',
+   primary: '#0070f3',
+   secondary: '#ff00ff',
   },
-}
- 
+ },
+ light: {
+  colors: {
+   primary: '#0070f3',
+   secondary: '#ff00ff',
+  },
+ },
+};
+
 export default function RootLayout({
-  children,
+ children,
 }: {
-  children: React.ReactNode
+ children: React.ReactNode;
 }) {
-  return (
-    <html>
-      <ThemeProvider theme={theme}>
-      <body>
-        <StyledComponentsRegistry>
-          <Header/>
-          {children}</StyledComponentsRegistry>
-      </body>
+ return (
+  <html>
+   <StyledComponentsRegistry>
+    <ThemeProvider theme={themes.dark}>
+     <body>
+      <Header />
+      {children}
+     </body>
     </ThemeProvider>
-    </html>
-  )
+   </StyledComponentsRegistry>
+  </html>
+ );
 }

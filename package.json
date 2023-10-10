@@ -12,12 +12,14 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "styled-theming": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/styled-theming": "^2.2.6",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "typescript": "^5"
