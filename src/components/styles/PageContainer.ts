@@ -1,6 +1,11 @@
 import { styled } from 'styled-components';
 
-const Container = styled.section`
+interface PageContainerProps {
+   variant: 'page' | 'image' | 'list';
+   theme: { colors: { secondary: string; primary: string } };
+}
+
+const Container = styled.section<PageContainerProps>`
    grid-column: 7 / span 5;
    margin-top: 300px;
 

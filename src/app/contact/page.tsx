@@ -6,7 +6,7 @@ import { Grid, PageContainer, Paragraph, Subtitle } from '@/components/styles';
 export default function page() {
  return (
   <Grid>
-   <PageContainer>
+   <PageContainer variant='page'>
     <h1>Contact Gilded Rose</h1>
     <Subtitle>
      Send us an email or give us a call M-F 9am-4pm MST. We would love to hear

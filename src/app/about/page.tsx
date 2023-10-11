@@ -5,7 +5,7 @@ import { Grid, PageContainer, Paragraph } from '@/components/styles';
 export default function page() {
  return (
   <Grid>
-   <PageContainer>
+   <PageContainer variant='page'>
     <h1>About Gilded Rose</h1>
     <Paragraph>
      Gilded Rose is not just a shop; it's an experience. Located in the heart of
