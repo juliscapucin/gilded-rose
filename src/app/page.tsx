@@ -28,7 +28,7 @@ export default function Home() {
      goods.
     </Subtitle>
    </StyledHero>
-   <ProductsSection variant={'home'} />
+   <ProductsSection variant={'new'} />
   </Grid>
  );
 }

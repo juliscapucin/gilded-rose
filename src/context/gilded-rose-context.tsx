@@ -3,7 +3,7 @@ import { Item, GildedRose } from '@/lib/gilded-rose';
 
 // Define the context
 interface GildedRoseContextType {
- items: Item[];
+ allItems: Item[];
  updateQuality: () => void;
 }
 
@@ -30,6 +30,8 @@ export const GildedRoseContextProvider = ({
   new Item('Normal Item', 10, 20),
   new Item('Aged Brie', 2, 2),
   new Item('Backstage passes to a TAFKAL80ETC concert', 5, 15),
+  new Item('Normal Item', 12, 20),
+  new Item('Normal Item', 6, 2),
  ];
 
  // Fetch for later
@@ -46,12 +48,12 @@ export const GildedRoseContextProvider = ({
  //   }
  // };
 
- const [items, setItems] = useState<Item[]>(initialItems);
- const gildedRose = new GildedRose([...items]);
+ const [allItems, setAllItems] = useState<Item[]>(initialItems);
+ const gildedRose = new GildedRose([...allItems]);
 
  const updateQuality = () => {
   const updatedItems = gildedRose.updateQuality();
-  setItems(updatedItems);
+  setAllItems(updatedItems);
  };
 
  useEffect(() => {
@@ -59,7 +61,7 @@ export const GildedRoseContextProvider = ({
  }, []);
 
  return (
-  <GildedRoseContext.Provider value={{ items, updateQuality }}>
+  <GildedRoseContext.Provider value={{ allItems, updateQuality }}>
    {children}
   </GildedRoseContext.Provider>
  );

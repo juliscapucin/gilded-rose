@@ -68,8 +68,7 @@ export class GildedRose {
    //  }
 
    updateQuality() {
-      // Filter out items with quality 0
-      // const itemsToUpdate = this.items.filter((item) => item.quality > 0);
+      console.log('updateQuality()');
 
       this.items.map((item) => {
          // Decrease sellIn for all items except Sulfuras
