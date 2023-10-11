@@ -1,13 +1,13 @@
 import { styled } from 'styled-components';
 
 interface PageContainerProps {
-   variant: 'page' | 'image' | 'list';
+   variant: 'page' | 'thumbnails' | 'list';
    theme: { colors: { secondary: string; primary: string } };
 }
 
 const Container = styled.section<PageContainerProps>`
    grid-column: 7 / span 5;
-   margin-top: 300px;
+   margin-top: var(--top-margin);
 
    h1 {
       font-size: var(--text-display);

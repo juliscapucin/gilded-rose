@@ -1,12 +1,12 @@
 'use client';
 
-import { Grid, PageContainer, Paragraph } from '@/components/styles';
+import { Grid, PageContainer, Paragraph, Title } from '@/components/styles';
 
 export default function page() {
  return (
   <Grid>
    <PageContainer variant='page'>
-    <h1>About Gilded Rose</h1>
+    <Title>About Gilded Rose</Title>
     <Paragraph>
      Gilded Rose is not just a shop; it's an experience. Located in the heart of
      our thriving city, we pride ourselves on offering a carefully curated

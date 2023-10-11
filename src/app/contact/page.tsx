@@ -1,13 +1,19 @@
 'use client';
 
 import { ContactForm } from '@/components';
-import { Grid, PageContainer, Paragraph, Subtitle } from '@/components/styles';
+import {
+ Grid,
+ PageContainer,
+ Paragraph,
+ Subtitle,
+ Title,
+} from '@/components/styles';
 
 export default function page() {
  return (
   <Grid>
    <PageContainer variant='page'>
-    <h1>Contact Gilded Rose</h1>
+    <Title>Contact Gilded Rose</Title>
     <Subtitle>
      Send us an email or give us a call M-F 9am-4pm MST. We would love to hear
      from you!

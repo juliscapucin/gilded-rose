@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
    --global-spacing: 8px;
    --header-height: 80px;
    --button-min-width: 300px;
-   --big-margin: 200px;
+   --top-margin: 200px;
 
    --text-display: 91px;
    --text-headline: 57px;

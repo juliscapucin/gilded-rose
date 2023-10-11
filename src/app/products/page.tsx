@@ -1,7 +1,13 @@
 'use client';
 
-import { Grid, PageContainer, Paragraph } from '@/components/styles';
+import { ProductsSection } from '@/components';
+import { Title } from '@/components/styles';
 
 export default function page() {
- return <Grid>page</Grid>;
+ return (
+  <>
+   <Title>Products</Title>
+   <ProductsSection variant={'thumbnails'} />
+  </>
+ );
 }

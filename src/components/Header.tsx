@@ -7,6 +7,7 @@ const StyledHeader = styled.header`
  position: fixed;
  top: 0;
  left: 0;
+ z-index: 10;
  height: var(--header-height);
  width: 50%;
  padding: 0 calc(var(--global-spacing) * 3);
@@ -33,10 +34,12 @@ const Navigation = styled.nav`
 export default function Header() {
  return (
   <StyledHeader>
-   <h1>G--R</h1>
+   <Link href='/'>
+    <h1>G--R</h1>
+   </Link>
    <Navigation>
-    <Link href='/'>Products</Link>
-    <Link href='/'>Sale</Link>
+    <Link href='/products'>Products</Link>
+    <Link href='/sale'>Sale</Link>
     <Link href='/about'>About</Link>
     <Link href='/contact'>Contact Us</Link>
    </Navigation>
