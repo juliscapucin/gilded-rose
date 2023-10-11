@@ -14,8 +14,14 @@ const ContainerHome = styled.section`
 
 const ContainerThumbs = styled.section`
  display: grid;
- grid-template-columns: repeat(4, 1fr);
  gap: calc(var(--global-spacing) * 3);
+
+ @media (min-width: 480px) {
+  grid-template-columns: repeat(2, 1fr);
+ }
+ @media (min-width: 768px) {
+  grid-template-columns: repeat(3, 1fr);
+ }
 `;
 
 const ContainerList = styled.section`
