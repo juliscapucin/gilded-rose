@@ -2,13 +2,14 @@
 
 import styled from 'styled-components';
 
+import { breakpoints } from '@/lib/constants';
 import { ProductsSection } from '@/components';
 import { Grid, Subtitle, Title } from '@/components/styles';
 
 const StyledHero = styled.section`
  margin-top: var(--big-margin);
 
- @media (min-width: 768px) {
+ @media (min-width: ${breakpoints.tablet}) {
   position: fixed;
   top: var(--big-margin);
   left: calc(var(--global-spacing) * 3);
