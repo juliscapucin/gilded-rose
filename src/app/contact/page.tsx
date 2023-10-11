@@ -12,7 +12,7 @@ import {
 export default function page() {
  return (
   <Grid>
-   <PageContainer variant='page'>
+   <PageContainer>
     <Title>Contact Gilded Rose</Title>
     <Subtitle>
      Send us an email or give us a call M-F 9am-4pm MST. We would love to hear

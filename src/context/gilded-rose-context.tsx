@@ -34,20 +34,6 @@ export const GildedRoseContextProvider = ({
   new Item('Normal Item', 6, 2),
  ];
 
- // Fetch for later
- // const [data, setData] = useState<any>(null);
-
- // const fetchData = async () => {
- //   try {
- //     // Perform your fetch operation here
- //     const response = await fetch('https://api.example.com/data');
- //     const result = await response.json();
- //     setData(result);
- //   } catch (error) {
- //     console.error('Error fetching data:', error);
- //   }
- // };
-
  const [allItems, setAllItems] = useState<Item[]>(initialItems);
  const gildedRose = new GildedRose([...allItems]);
 
