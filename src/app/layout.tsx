@@ -1,23 +1,11 @@
 'use client';
 
-import StyledComponentsRegistry from '@/lib/styles-registry';
+import { StyledComponentsRegistry, themeDark, themeLight } from '@/lib';
 import styled, { ThemeProvider } from 'styled-components';
+import { GildedRoseContextProvider } from '@/context';
+
 import { Header, Meta } from '@/components';
 import { GlobalStyles } from '@/components/styles';
-
-const themeDark = {
- colors: {
-  primary: '#2b0808',
-  secondary: '#f16000',
- },
-};
-
-const themeLight = {
- colors: {
-  primary: '#c39999',
-  secondary: '#c30000',
- },
-};
 
 const StyledBody = styled.body`
  background-color: ${({ theme }) => theme.colors.primary};
@@ -42,7 +30,9 @@ export default function RootLayout({
     <ThemeProvider theme={themeDark}>
      <StyledBody>
       <Header />
-      <StyledMain>{children}</StyledMain>
+      <StyledMain>
+       <GildedRoseContextProvider>{children}</GildedRoseContextProvider>
+      </StyledMain>
      </StyledBody>
     </ThemeProvider>
    </StyledComponentsRegistry>

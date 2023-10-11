@@ -1,6 +1,8 @@
+import Button from './Button';
 import GlobalStyles from './Global';
 import Grid from './Grid';
 import PageContainer from './PageContainer';
 import Paragraph from './Paragraph';
+import Subtitle from './Subtitle';
 
-export { GlobalStyles, Grid, PageContainer, Paragraph };
+export { Button, GlobalStyles, Grid, PageContainer, Paragraph, Subtitle };
