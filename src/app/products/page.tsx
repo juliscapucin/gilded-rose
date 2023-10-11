@@ -7,7 +7,7 @@ export default function page() {
  return (
   <>
    <Title>Products</Title>
-   <ProductsSection variant={'thumbnails'} />
+   <ProductsSection variant={'all'} />
   </>
  );
 }

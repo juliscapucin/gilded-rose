@@ -21,14 +21,6 @@ const StyledHeader = styled.header`
 const Navigation = styled.nav`
  display: flex;
  gap: calc(var(--global-spacing) * 4);
-
- a {
-  font-size: var(--text-large);
-
-  &:hover {
-   text-decoration: underline;
-  }
- }
 `;
 
 export default function Header() {

@@ -7,7 +7,7 @@ export default function page() {
  return (
   <>
    <Title>Sale</Title>
-   <ProductsSection variant={'thumbnails'} />
+   <ProductsSection variant={'sale'} />
   </>
  );
 }

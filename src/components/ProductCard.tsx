@@ -1,11 +1,10 @@
+'use client';
+
 import { styled } from 'styled-components';
+import { Product } from '@/types';
 
 type ProductCardProps = {
- item: {
-  name: string;
-  sellIn: number;
-  quality: number;
- };
+ item: Product;
 };
 
 const StyledProductCard = styled.div`
