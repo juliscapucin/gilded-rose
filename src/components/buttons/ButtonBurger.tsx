@@ -1,6 +1,8 @@
 import { MouseEventHandler } from 'react';
 import { styled } from 'styled-components';
 
+import { breakpoints } from '@/lib/constants';
+
 interface ButtonBurgerProps {
  action: MouseEventHandler<HTMLButtonElement>;
 }
@@ -20,7 +22,10 @@ const StyledButtonBurger = styled.button`
  flex-direction: column;
  justify-content: center;
  gap: var(--global-spacing);
- background-color: blue;
+
+ @media (min-width: ${breakpoints.tablet}) {
+  display: none;
+ }
 
  .line {
   width: 100%;

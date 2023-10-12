@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { breakpoints } from '@/lib/constants';
 import { NavLink } from '@/components/styles';
 import { ButtonBurger, ButtonLogo } from '@/components/buttons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.header<{ $isOpen: boolean }>`
  position: fixed;
  top: 0;
  left: 0;
@@ -23,7 +23,9 @@ const StyledHeader = styled.header`
  text-align: center;
  color: ${({ theme }) => theme.colors.secondary};
  background-color: ${({ theme }) => theme.colors.primary};
- transform: translate3d(-100%, 0, 0);
+ transition: transform 0.3s var(--ease-in-out);
+ transform: ${({ $isOpen }) =>
+  $isOpen ? 'translate3d(0, 0, 0)' : 'translate3d(-100%, 0, 0)'};
 
  @media (min-width: ${breakpoints.desktop}) {
   flex-direction: row;
@@ -62,9 +64,10 @@ export default function Header() {
 
  return (
   <>
+   <ButtonLogo isMobile={true} />
    <ButtonBurger action={toggleMenu} />
-   <StyledHeader>
-    <ButtonLogo />
+   <StyledHeader $isOpen={isOpen}>
+    <ButtonLogo isMobile={false} />
     <Navigation>
      {navLinks.map((item, index) => (
       <NavLink key={`navlink-${index}`}>
