@@ -80,6 +80,12 @@ a {
   text-decoration: none;
 }
 
+button{
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 
 /* Scrollbar Styles */
 

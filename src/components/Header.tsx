@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import { breakpoints } from '@/lib/constants';
 import { NavLink } from '@/components/styles';
+import { ButtonBurger, ButtonLogo } from '@/components/buttons';
+import { useState } from 'react';
 
 const StyledHeader = styled.header`
  position: fixed;
@@ -21,7 +23,7 @@ const StyledHeader = styled.header`
  text-align: center;
  color: ${({ theme }) => theme.colors.secondary};
  background-color: ${({ theme }) => theme.colors.primary};
- transform: translate3d(-5%, 0, 0);
+ transform: translate3d(-100%, 0, 0);
 
  @media (min-width: ${breakpoints.desktop}) {
   flex-direction: row;
@@ -31,11 +33,6 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   text-align: left;
   transform: translate3d(0, 0, 0);
- }
-
- .logo {
-  font-size: 60px;
-  font-weight: var(--font-weight-ultra-light);
  }
 `;
 
@@ -57,20 +54,25 @@ const navLinks = [
 ];
 
 export default function Header() {
+ const [isOpen, setIsOpen] = useState(false);
+
+ const toggleMenu = () => {
+  setIsOpen(!isOpen);
+ };
+
  return (
-  <StyledHeader>
-   <NavLink className='logo'>
-    <Link href='/'>
-     <span>G–R</span>
-    </Link>
-   </NavLink>
-   <Navigation>
-    {navLinks.map((item, index) => (
-     <NavLink key={`navlink-${index}`}>
-      <Link href={item.href}>{item.label}</Link>
-     </NavLink>
-    ))}
-   </Navigation>
-  </StyledHeader>
+  <>
+   <ButtonBurger action={toggleMenu} />
+   <StyledHeader>
+    <ButtonLogo />
+    <Navigation>
+     {navLinks.map((item, index) => (
+      <NavLink key={`navlink-${index}`}>
+       <Link href={item.href}>{item.label}</Link>
+      </NavLink>
+     ))}
+    </Navigation>
+   </StyledHeader>
+  </>
  );
 }
