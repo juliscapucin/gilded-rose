@@ -17,7 +17,7 @@ const Button = styled.button<ButtonProps>`
          ? `${theme.colors.primary}`
          : `${theme.colors.secondary}`};
    border: 1px solid ${({ theme }) => theme.colors.secondary};
-   border-radius: 3px;
+   border-radius: var(--border-radius);
    padding: var(--global-spacing) calc(var(--global-spacing) * 2);
    font-size: var(--font-size-medium);
    cursor: pointer;

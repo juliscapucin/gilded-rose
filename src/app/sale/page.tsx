@@ -6,7 +6,7 @@ import { Title } from '@/components/styles';
 export default function page() {
  return (
   <>
-   <Title>Sale</Title>
+   <Title $marginMobile={true}>Sale</Title>
    <ProductsSection variant={'sale'} />
   </>
  );
