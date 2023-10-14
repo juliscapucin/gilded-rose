@@ -1,19 +1,10 @@
 import Link from 'next/link';
 import { styled } from 'styled-components';
 
-import { breakpoints } from '@/lib/styles-constants';
-
-type ButtonLogoProps = { isMobile?: boolean };
-
-const StyledButtonLogo = styled.button<{ $isMobile?: boolean }>`
+const StyledButtonLogo = styled.button`
  font-size: 60px;
  font-weight: var(--font-weight-ultra-light);
  color: ${({ theme }) => theme.colors.secondary};
- margin: var(--global-spacing);
-
- @media (min-width: ${breakpoints.tablet}) {
-  display: ${({ $isMobile }) => ($isMobile ? 'none' : 'block')};
- }
 
  a {
   display: flex;
@@ -26,9 +17,9 @@ const StyledButtonLogo = styled.button<{ $isMobile?: boolean }>`
  }
 `;
 
-export default function ButtonLogo({ isMobile }: ButtonLogoProps) {
+export default function ButtonLogo() {
  return (
-  <StyledButtonLogo $isMobile={isMobile}>
+  <StyledButtonLogo>
    <Link href='/'>
     <span>G</span>
     <span>–</span>

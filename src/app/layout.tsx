@@ -4,7 +4,7 @@ import { StyledComponentsRegistry, themeDark, themeLight } from '@/lib';
 import styled, { ThemeProvider } from 'styled-components';
 import { GildedRoseContextProvider } from '@/context';
 
-import { Header, Meta } from '@/components';
+import { Footer, Header, Meta } from '@/components';
 import { GlobalStyles } from '@/components/styles';
 
 const StyledBody = styled.body`
@@ -35,6 +35,7 @@ export default function RootLayout(props: {
         {props.shallowModal}
        </GildedRoseContextProvider>
       </StyledMain>
+      <Footer />
      </StyledBody>
     </ThemeProvider>
    </StyledComponentsRegistry>

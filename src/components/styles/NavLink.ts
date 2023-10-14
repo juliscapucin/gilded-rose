@@ -26,7 +26,6 @@ const NavLink = styled.div`
 
          &::before {
             transform: scaleY(1);
-            z-index: -1;
          }
       }
 
