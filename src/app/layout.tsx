@@ -17,10 +17,9 @@ const StyledMain = styled.main`
   calc(var(--global-spacing) * 3);
 `;
 
-export default function RootLayout({
- children,
-}: {
+export default function RootLayout(props: {
  children: React.ReactNode;
+ shallowModal: React.ReactNode;
 }) {
  return (
   <html>
@@ -31,7 +30,10 @@ export default function RootLayout({
      <StyledBody>
       <Header />
       <StyledMain>
-       <GildedRoseContextProvider>{children}</GildedRoseContextProvider>
+       <GildedRoseContextProvider>
+        {props.children}
+        {props.shallowModal}
+       </GildedRoseContextProvider>
       </StyledMain>
      </StyledBody>
     </ThemeProvider>

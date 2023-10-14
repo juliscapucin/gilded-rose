@@ -1,8 +1,11 @@
 import { styled } from 'styled-components';
 
-const Title = styled.h1`
+import { breakpoints } from '@/lib/styles-constants';
+
+const Title = styled.h1<{ $marginMobile?: boolean }>`
    font-size: var(--text-display);
-   margin-top: var(--top-margin);
+   margin-top: ${({ $marginMobile }) =>
+      $marginMobile ? 'var(--top-margin)' : '0'};
    margin-bottom: calc(var(--global-spacing) * 5);
 `;
 

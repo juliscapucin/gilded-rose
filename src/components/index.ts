@@ -4,5 +4,14 @@ import Loader from './Loader';
 import Meta from './Meta';
 import ProductCard from './ProductCard';
 import ProductsSection from './ProductsSection';
+import ShallowModal from './shallowModal/ShallowModal';
 
-export { ContactForm, Header, Loader, Meta, ProductsSection, ProductCard };
+export {
+   ContactForm,
+   Header,
+   Loader,
+   Meta,
+   ProductsSection,
+   ProductCard,
+   ShallowModal,
+};

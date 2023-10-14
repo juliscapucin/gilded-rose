@@ -22,13 +22,13 @@ export class GildedRose {
 
       this.items.map((item) => {
          // Decrease sellIn for all items except Sulfuras
-         if (item.name !== 'Sulfuras, Hand of Ragnaros') {
+         if (item.name !== 'Sulfuras') {
             item.sellIn -= 1;
          }
 
          // Update item quality based on its name
          switch (item.name) {
-            case 'Sulfuras, Hand of Ragnaros':
+            case 'Sulfuras':
                // Sulfuras never changes
                break;
 

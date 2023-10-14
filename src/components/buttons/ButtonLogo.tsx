@@ -12,7 +12,7 @@ const StyledButtonLogo = styled.button<{ $isMobile?: boolean }>`
  margin: var(--global-spacing);
 
  @media (min-width: ${breakpoints.tablet}) {
-  display: ${({ $isMobile }) => ($isMobile ? 'none' : 'none')};
+  display: ${({ $isMobile }) => ($isMobile ? 'none' : 'block')};
  }
 
  a {

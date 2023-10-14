@@ -6,7 +6,7 @@ export default function page() {
  return (
   <Grid>
    <PageContainer>
-    <Title>About Gilded Rose</Title>
+    <Title $marginMobile={true}>About Gilded Rose</Title>
     <Paragraph>
      Gilded Rose is not just a shop; it's an experience. Located in the heart of
      our thriving city, we pride ourselves on offering a carefully curated

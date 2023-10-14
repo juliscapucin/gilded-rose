@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
    --breakpoint-tablet: 768px;
    --breakpoint-desktop: 1024px;
 
-   --border-radius: 12px;
+   --border-radius: 4px;
 
    --font-primary: 'ff-real-headline-pro', sans-serif;
    --font-secondary: 'ff-real-text-pro', sans-serif;
