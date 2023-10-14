@@ -32,7 +32,7 @@ const ContainerThumbs = styled.section`
 `;
 
 export default function ProductsSection({ variant }: { variant: string }) {
- const { allItems, updateQuality } = useGildedRoseContext();
+ const { allItems } = useGildedRoseContext();
  const [itemsNew, setItemsNew] = useState<Product[] | null>(null);
  const [itemsSale, setItemsSale] = useState<Product[] | null>(null);
 

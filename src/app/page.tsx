@@ -11,7 +11,6 @@ const StyledHero = styled.section`
 
  @media (min-width: ${breakpoints.tablet}) {
   position: fixed;
-  z-index: -1;
   top: var(--big-margin);
   left: calc(var(--global-spacing) * 3);
   width: 50%;
@@ -22,7 +21,7 @@ const StyledHero = styled.section`
 export default function Home() {
  return (
   <Grid>
-   <StyledHero>
+   <StyledHero className='home-hero'>
     <Title $marginMobile={true}>Welcome to Gilded Rose.</Title>
     <Subtitle>
      We are a small inn with a prime location in a prominent city ran by a

@@ -1,10 +1,15 @@
-import { ButtonLogo } from '@/components/buttons';
+'use client';
+
+import { use, useEffect, useRef } from 'react';
 import { styled } from 'styled-components';
+
+import { ButtonLogo } from '@/components/buttons';
 import { NavLinks, SocialLinks } from '@/components';
 import { breakpoints } from '@/lib/styles-constants';
+import { useFooterDisplacement } from '@/hooks';
 
 const StyledFooter = styled.footer`
- padding: calc(var(--global-spacing) * 20) calc(var(--global-spacing) * 3)
+ padding: calc(var(--global-spacing) * 10) calc(var(--global-spacing) * 3)
   calc(var(--global-spacing) * 10);
  display: flex;
  flex-direction: column;
@@ -19,8 +24,12 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer() {
+ const footerRef = useRef(null);
+
+ useFooterDisplacement(footerRef);
+
  return (
-  <StyledFooter>
+  <StyledFooter ref={footerRef}>
    <NavLinks variant='footer' />
    <SocialLinks />
    <div>
