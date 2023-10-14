@@ -11,6 +11,7 @@ const StyledHero = styled.section`
 
  @media (min-width: ${breakpoints.tablet}) {
   position: fixed;
+  z-index: -1;
   top: var(--big-margin);
   left: calc(var(--global-spacing) * 3);
   width: 50%;

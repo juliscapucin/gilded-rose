@@ -8,16 +8,9 @@ interface ButtonBurgerProps {
 }
 
 const StyledButtonBurger = styled.button`
- position: fixed;
- z-index: 20;
- top: calc(var(--global-spacing) * 2);
- right: calc(var(--global-spacing) * 2);
  width: calc(var(--global-spacing) * 5);
  height: calc(var(--global-spacing) * 5);
  margin-right: var(--global-spacing);
- background-color: transparent;
- border: none;
- cursor: pointer;
  display: flex;
  flex-direction: column;
  justify-content: center;

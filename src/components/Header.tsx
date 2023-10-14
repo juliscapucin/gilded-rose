@@ -1,13 +1,12 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 import { breakpoints } from '@/lib/styles-constants';
-import { NavLink } from '@/components/styles';
 import { ButtonBurger, ButtonClose, ButtonLogo } from '@/components/buttons';
+import { NavLinks } from '@/components';
 
 const StyledHeader = styled.header<{ $isOpen: boolean }>`
  position: fixed;
@@ -40,23 +39,21 @@ const StyledHeader = styled.header<{ $isOpen: boolean }>`
  }
 `;
 
-const StyledNavigation = styled.nav`
+const StyledMobileHeader = styled.div`
+ position: fixed;
  display: flex;
- flex-direction: column;
- gap: calc(var(--global-spacing) * 4);
+ justify-content: space-between;
+ z-index: 20;
+ top: 0;
+ left: 0;
+ right: 0;
+ width: 100%;
+ padding: calc(var(--global-spacing) * 2);
 
  @media (min-width: ${breakpoints.desktop}) {
-  flex-direction: row;
-  margin-top: 0;
+  display: none;
  }
 `;
-
-const navLinks = [
- { href: '/products', label: 'Products' },
- { href: '/sale', label: 'Sale' },
- { href: '/about', label: 'About' },
- { href: '/contact', label: 'Contact Us' },
-];
 
 export default function Header() {
  const [isOpen, setIsOpen] = useState(false);
@@ -67,27 +64,24 @@ export default function Header() {
  }, [pathname]);
 
  const toggleMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
-  console.log(e.target);
   setIsOpen(!isOpen);
  };
 
  return (
   <>
-   <ButtonLogo isMobile={true} />
-   {isOpen ? (
-    <ButtonClose action={(e) => toggleMenu(e)} />
-   ) : (
-    <ButtonBurger action={(e) => toggleMenu(e)} />
-   )}
+   <StyledMobileHeader>
+    {isOpen ? (
+     <ButtonClose action={toggleMenu} />
+    ) : (
+     <>
+      <ButtonLogo />
+      <ButtonBurger action={toggleMenu} />
+     </>
+    )}
+   </StyledMobileHeader>
    <StyledHeader $isOpen={isOpen}>
-    <ButtonLogo isMobile={false} />
-    <StyledNavigation>
-     {navLinks.map((item, index) => (
-      <NavLink key={`navlink-${index}`}>
-       <Link href={item.href}>{item.label}</Link>
-      </NavLink>
-     ))}
-    </StyledNavigation>
+    <ButtonLogo />
+    <NavLinks variant='header' />
    </StyledHeader>
   </>
  );

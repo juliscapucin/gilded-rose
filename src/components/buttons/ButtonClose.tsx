@@ -13,7 +13,6 @@ const StyledButtonClose = styled.button`
  height: calc(var(--global-spacing) * 5);
 
  .line {
-  pointer-events: none;
   position: absolute;
   height: 1px;
   width: 100%;
