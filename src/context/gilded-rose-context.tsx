@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Item, GildedRose } from '@/lib/gilded-rose';
+import { Item, GildedRose } from '@/utils/gilded-rose';
 
 // Define the context
 interface GildedRoseContextType {

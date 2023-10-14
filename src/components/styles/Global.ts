@@ -78,10 +78,12 @@ h1,h2,h3,h4,h5,h6 {
 a {
   color: inherit;
   text-decoration: none;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+button{
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 

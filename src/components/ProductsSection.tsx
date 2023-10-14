@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { breakpoints } from '@/lib/styles-constants';
 import { Loader, ProductCard } from '@/components';
 import { useGildedRoseContext } from '@/context';
 
@@ -22,10 +23,10 @@ const ContainerThumbs = styled.section`
  display: grid;
  gap: calc(var(--global-spacing) * 3);
 
- @media (min-width: 480px) {
+ @media (min-width: ${breakpoints.mobile}) {
   grid-template-columns: repeat(2, 1fr);
  }
- @media (min-width: 768px) {
+ @media (min-width: ${breakpoints.tablet}) {
   grid-template-columns: repeat(3, 1fr);
  }
 `;
