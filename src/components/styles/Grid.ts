@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { breakpoints } from '@/lib/constants';
+import { breakpoints } from '@/lib/styles-constants';
 
 const Grid = styled.div`
    display: block;

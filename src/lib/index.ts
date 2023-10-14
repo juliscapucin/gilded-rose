@@ -1,11 +1,4 @@
-import { GildedRose } from './gilded-rose';
-import { themeDark, themeLight, breakpoints } from './constants';
+import { themeDark, themeLight, breakpoints } from './styles-constants';
 import StyledComponentsRegistry from './styles-registry';
 
-export {
-   breakpoints,
-   GildedRose,
-   themeDark,
-   themeLight,
-   StyledComponentsRegistry,
-};
+export { breakpoints, themeDark, themeLight, StyledComponentsRegistry };

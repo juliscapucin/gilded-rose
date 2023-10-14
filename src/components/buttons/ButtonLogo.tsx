@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { styled } from 'styled-components';
 
-import { breakpoints } from '@/lib/constants';
+import { breakpoints } from '@/lib/styles-constants';
 
 type ButtonLogoProps = { isMobile?: boolean };
 
@@ -9,9 +9,10 @@ const StyledButtonLogo = styled.button<{ $isMobile?: boolean }>`
  font-size: 60px;
  font-weight: var(--font-weight-ultra-light);
  color: ${({ theme }) => theme.colors.secondary};
+ margin: var(--global-spacing);
 
  @media (min-width: ${breakpoints.tablet}) {
-  display: ${({ $isMobile }) => ($isMobile ? 'none' : 'block')};
+  display: ${({ $isMobile }) => ($isMobile ? 'none' : 'none')};
  }
 
  a {

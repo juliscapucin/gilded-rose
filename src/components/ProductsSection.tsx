@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { breakpoints } from '@/lib/constants';
+import { breakpoints } from '@/lib/styles-constants';
 import { Loader, ProductCard } from '@/components';
 import { useGildedRoseContext } from '@/context';
 

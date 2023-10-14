@@ -1,4 +1,4 @@
-import { Item, GildedRose } from '@/lib/gilded-rose';
+import { Item, GildedRose } from '@/utils/gilded-rose';
 
 describe('Gilded Rose', () => {
    it('should foo', () => {
@@ -7,3 +7,4 @@ describe('Gilded Rose', () => {
       expect(items[0].name).toBe('foo');
    });
 });
+``;

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-import { breakpoints } from '@/lib/constants';
+import { breakpoints } from '@/lib/styles-constants';
 import { ProductsSection } from '@/components';
 import { Grid, Subtitle, Title } from '@/components/styles';
 
