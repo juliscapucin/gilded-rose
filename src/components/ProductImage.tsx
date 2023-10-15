@@ -12,8 +12,6 @@ const StyledProductImage = styled.div`
 
  img {
   z-index: 1;
-  /* mix-blend-mode: color-burn; */
-  transition: all 0.2s var(--ease-in-out);
  }
 `;
 
@@ -27,7 +25,8 @@ const StyledProductBackground = styled.div`
  left: 0;
  width: 100%;
  height: 100%;
- opacity: 0.2;
+ opacity: 0.4;
+ background-color: ${({ theme }) => theme.colors.customColor1};
 
  > div:first-child {
   background-color: ${({ theme }) => theme.colors.customColor1};
@@ -52,10 +51,10 @@ export default function ProductImage({ productSlug }: { productSlug: string }) {
      alt={`Icon representing ${productSlug}`}
      fill={true}
     />
+    {/* <div></div>
     <div></div>
     <div></div>
-    <div></div>
-    <div></div>
+    <div></div> */}
    </StyledProductBackground>
   </StyledProductImage>
  );
