@@ -13,7 +13,7 @@ import { Subtitle } from './styles';
 const ContainerHome = styled.section`
  display: flex;
  flex-direction: column;
- gap: calc(var(--global-spacing) * 3);
+ gap: calc(var(--global-spacing) * 6);
  margin-top: calc(var(--global-spacing) * 3);
  background-color: var(--color-primary);
  grid-column: 8 / span 5;
@@ -21,7 +21,7 @@ const ContainerHome = styled.section`
 
 const ContainerThumbs = styled.section`
  display: grid;
- gap: calc(var(--global-spacing) * 3);
+ gap: calc(var(--global-spacing) * 6);
 
  @media (min-width: ${breakpoints.mobile}) {
   grid-template-columns: repeat(2, 1fr);

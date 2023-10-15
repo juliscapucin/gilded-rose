@@ -1,4 +1,5 @@
 import ContactForm from './ContactForm';
+import CustomCursor from './CustomCursor';
 import Footer from './Footer';
 import Header from './Header';
 import Loader from './Loader';
@@ -11,6 +12,7 @@ import SocialLinks from './SocialLinks';
 
 export {
    ContactForm,
+   CustomCursor,
    Footer,
    Header,
    Loader,

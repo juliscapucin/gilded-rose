@@ -31,6 +31,7 @@ export default function Meta() {
    <meta name='msapplication-config' content='/favicon/browserconfig.xml' />
    <meta name='theme-color' content='#000' />
    <meta name='Gilded Rose' content={`We buy and sell only the finest goods`} />
+   <title>Gilded Rose</title>
    <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
    <link rel='stylesheet' href='https://use.typekit.net/cbg5juo.css' />
    {/* <meta property='og:image' content={HOME_OG_IMAGE_URL} key='ogImage' /> */}
