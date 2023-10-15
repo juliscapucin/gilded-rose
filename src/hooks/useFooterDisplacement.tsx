@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -23,6 +25,6 @@ export default function useFooterDisplacement(element: MutableRefObject<null>) {
   });
 
   // Animation to scrub
-  tl.fromTo('.home-hero', { yPercent: 0 }, { yPercent: -100 });
+  tl.fromTo('[data-animation-home-hero]', { yPercent: 0 }, { yPercent: -100 });
  }, [pathname]);
 }

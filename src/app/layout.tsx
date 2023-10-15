@@ -10,7 +10,6 @@ import { GildedRoseContextProvider } from '@/context';
 
 import { Footer, Header, Meta } from '@/components';
 import { GlobalStyles } from '@/components/styles';
-import path from 'path';
 
 const StyledBody = styled.body`
  background-color: ${({ theme }) => theme.colors.primary};
@@ -23,13 +22,12 @@ const StyledMain = styled.main`
 `;
 
 export default function RootLayout(props: { children: React.ReactNode }) {
- const pathname = usePathname();
  const [homeTheme, setHomeTheme] = useState(themes.dark);
 
  useEffect(() => {
   const theme = sessionStorage.getItem('theme');
   theme === 'dark' ? setHomeTheme(themes.dark) : setHomeTheme(themes.light);
- }, [pathname]);
+ }, []);
 
  return (
   <html>

@@ -20,8 +20,8 @@ const StyledHomeHero = styled.section`
 
 export default function Home() {
  return (
-  <Grid data-animation-page>
-   <StyledHomeHero>
+  <>
+   <StyledHomeHero data-animation-home-hero>
     <Title $marginMobile={true}>Welcome to Gilded Rose.</Title>
     <Subtitle>
      We are a small inn with a prime location in a prominent city ran by a
@@ -29,7 +29,9 @@ export default function Home() {
      goods.
     </Subtitle>
    </StyledHomeHero>
-   <ProductsSection variant={'new'} />
-  </Grid>
+   <Grid data-animation-page>
+    <ProductsSection variant={'new'} />
+   </Grid>
+  </>
  );
 }
