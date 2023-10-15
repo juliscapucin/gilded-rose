@@ -5,8 +5,8 @@ import Loader from './Loader';
 import Meta from './Meta';
 import NavLinks from './NavLinks';
 import ProductCard from './ProductCard';
+import ProductImage from './ProductImage';
 import ProductsSection from './ProductsSection';
-import ShallowModal from './shallowModal/ShallowModal';
 import SocialLinks from './SocialLinks';
 
 export {
@@ -16,8 +16,8 @@ export {
    Loader,
    Meta,
    NavLinks,
-   ProductsSection,
    ProductCard,
-   ShallowModal,
+   ProductImage,
+   ProductsSection,
    SocialLinks,
 };

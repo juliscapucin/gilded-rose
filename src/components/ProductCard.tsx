@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { styled } from 'styled-components';
 import { Product } from '@/types';
+import { ProductImage } from '.';
 
 type ProductCardProps = {
  item: Product;
@@ -31,15 +32,15 @@ const StyledProductInfo = styled.div`
 `;
 
 export default function ProductCard({ item }: ProductCardProps) {
- const { name, sellIn, quality } = item;
  const router = useRouter();
+ const { name, sellIn, quality } = item;
+ const productSlug = name.toLowerCase().split(' ').slice(0, 2).join('-');
 
  const handleProductModal = (
   e: React.MouseEvent<HTMLButtonElement>,
   name: string
  ) => {
   const slug = name.toLowerCase().split(' ').slice(0, 2).join('-');
-  console.log(slug);
   router.push(`/products/${slug}`);
  };
 
@@ -50,6 +51,7 @@ export default function ProductCard({ item }: ProductCardProps) {
     <p>Sell In: {sellIn}</p>
     <p>Quality: {quality}</p>
    </StyledProductInfo>
+   <ProductImage productSlug={productSlug} />
   </StyledProductCard>
  );
 }

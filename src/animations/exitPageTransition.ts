@@ -1,10 +1,11 @@
 import gsap from 'gsap';
-import { type } from 'os';
 
 type RouterActionType = () => void;
 
 export const exitPageTransition = (routerAction: RouterActionType) => {
+   const page = document.querySelector('[data-animation-page]');
+
    const tl = gsap.timeline({ onComplete: () => routerAction() });
 
-   tl.to('.page', { xPercent: 100 });
+   tl.to(page, { xPercent: 100 });
 };

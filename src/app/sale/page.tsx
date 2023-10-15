@@ -5,7 +5,7 @@ import { Title } from '@/components/styles';
 
 export default function page() {
  return (
-  <div className='page'>
+  <div data-animation-page>
    <Title $marginMobile={true}>Sale</Title>
    <ProductsSection variant={'sale'} />
   </div>

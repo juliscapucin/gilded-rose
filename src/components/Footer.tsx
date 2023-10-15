@@ -1,7 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { styled } from 'styled-components';
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { ButtonLogo } from '@/components/buttons';
 import { NavLinks, SocialLinks } from '@/components';
@@ -26,7 +30,31 @@ const StyledFooter = styled.footer`
 export default function Footer() {
  const footerRef = useRef(null);
 
- useFooterDisplacement(footerRef);
+ //  useFooterDisplacement(footerRef);
+
+ const pathname = usePathname();
+
+ //  useEffect(() => {
+ //   if (pathname !== '/' || !footerRef.current) return;
+
+ //   gsap.registerPlugin(ScrollTrigger);
+
+ //   console.log('ji');
+
+ //   // Create timeline + start scrollTrigger
+ //   const tl = gsap.timeline({
+ //    scrollTrigger: {
+ //     trigger: footerRef.current,
+ //     start: 'top bottom',
+ //     end: 'bottom bottom',
+ //     markers: true,
+ //     scrub: 1,
+ //    },
+ //   });
+
+ //   // Animation to scrub
+ //   tl.fromTo('.home-hero', { yPercent: 0 }, { yPercent: -100 });
+ //  }, [pathname]);
 
  return (
   <StyledFooter ref={footerRef}>

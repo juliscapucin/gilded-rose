@@ -50,10 +50,10 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
 `;
 
 const navLinks = [
- { href: 'products', label: 'Products' },
- { href: 'sale', label: 'Sale' },
- { href: 'about', label: 'About' },
- { href: 'contact', label: 'Contact Us' },
+ { href: '/products', label: 'Products' },
+ { href: '/sale', label: 'Sale' },
+ { href: '/about', label: 'About' },
+ { href: '/contact', label: 'Contact Us' },
 ];
 
 export default function NavLinks({ variant }: { variant: string }) {
@@ -67,7 +67,7 @@ export default function NavLinks({ variant }: { variant: string }) {
   <StyledNavLinks $variant={variant}>
    <h3>Explore</h3>
    {navLinks.map((item, index) =>
-    pathname.includes(`/${item.href}`) ? (
+    pathname.includes(`${item.href}`) ? (
      // if href is the same as the current pathname, don't add a link
      <span className='inactive' key={`span-${index}`}>
       {item.label}

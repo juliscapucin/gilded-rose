@@ -15,7 +15,7 @@ export default function page() {
  const pageRef = useRef(null);
 
  return (
-  <Grid ref={pageRef} className='page'>
+  <Grid ref={pageRef} data-animation-page>
    <PageContainer>
     <Title $marginMobile={true}>Contact Gilded Rose</Title>
     <Subtitle>
