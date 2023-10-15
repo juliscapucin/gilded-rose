@@ -19,7 +19,7 @@ const NavLink = styled.button`
       background-color: ${({ theme }) => theme.colors.secondary};
       transform: scaleY(0);
       transform-origin: bottom;
-      transition: all 0.2s ease-in-out 0s;
+      transition: transform 0.2s ease-in-out 0s;
       z-index: -1;
    }
    &:hover {

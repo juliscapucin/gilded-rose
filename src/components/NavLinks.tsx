@@ -1,7 +1,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
 
-import { gsap } from 'gsap';
+import { exitPageTransition } from '@/animations';
 
 import { NavLink } from '@/components/styles';
 import { breakpoints } from '@/lib/styles-constants';
@@ -60,15 +60,7 @@ export default function NavLinks({ variant }: { variant: string }) {
  const router = useRouter();
  const pathname = usePathname();
 
- const changePage = (href: string) => {
-  // Create timeline
-  const tl = gsap.timeline({ onComplete: () => router.push(href) });
-
-  // Animation
-  tl.to('.page', { xPercent: 100 });
- };
-
- // Triggers Enter animation very time the page changes
+ // Triggers Enter Page transition every time the pathname changes
  useEnterPageTransition();
 
  return (
@@ -82,7 +74,10 @@ export default function NavLinks({ variant }: { variant: string }) {
      </span>
     ) : (
      // if href is different from the current pathname, add a link
-     <NavLink key={`navlink-${index}`} onClick={() => changePage(item.href)}>
+     <NavLink
+      key={`navlink-${index}`}
+      onClick={() => exitPageTransition(() => router.push(item.href))}
+     >
       {item.label}
      </NavLink>
     )

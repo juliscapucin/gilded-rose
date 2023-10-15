@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { styled } from 'styled-components';
 
 import { ButtonLogo } from '@/components/buttons';
