@@ -1,10 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { styled } from 'styled-components';
 import { Product } from '@/types';
-import { ProductImage } from '.';
+import { ProductImage } from '@/components';
 
 type ProductCardProps = {
  item: Product;
@@ -12,28 +13,37 @@ type ProductCardProps = {
 
 const StyledProductCard = styled.button`
  position: relative;
- padding: calc(var(--global-spacing) * 3);
- background-color: ${({ theme }) => theme.colors.secondary};
  color: ${({ theme }) => theme.colors.primary};
  width: 100%;
  aspect-ratio: 1 / 1;
  border-radius: var(--border-radius);
+ transition: all 0.2s var(--ease-in-out);
+
+ &:hover {
+  transform: scale(1.1);
+ }
 `;
 
 const StyledProductInfo = styled.div`
  position: absolute;
- top: calc(var(--global-spacing) * 3);
+ bottom: calc(var(--global-spacing) * 3);
  left: calc(var(--global-spacing) * 3);
  display: flex;
  flex-direction: column;
  align-items: flex-start;
  gap: var(--global-spacing);
  text-align: left;
+ z-index: 10;
+ color: ${({ theme }) => theme.colors.secondary};
+
+ h2 {
+  font-size: var(--text-subtitle);
+ }
 `;
 
 export default function ProductCard({ item }: ProductCardProps) {
  const router = useRouter();
- const { name, sellIn, quality } = item;
+ const { name } = item;
  const productSlug = name.toLowerCase().split(' ').slice(0, 2).join('-');
 
  const handleProductModal = (
@@ -48,8 +58,6 @@ export default function ProductCard({ item }: ProductCardProps) {
   <StyledProductCard onClick={(e) => handleProductModal(e, name)}>
    <StyledProductInfo>
     <h2>{name}</h2>
-    <p>Sell In: {sellIn}</p>
-    <p>Quality: {quality}</p>
    </StyledProductInfo>
    <ProductImage productSlug={productSlug} />
   </StyledProductCard>
