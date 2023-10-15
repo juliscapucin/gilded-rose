@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-.npmrc
+
 
 # testing
 /coverage
@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+.npmrc
 
 # debug
 npm-debug.log*
