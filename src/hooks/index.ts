@@ -1,4 +1,9 @@
 import useIsElementInViewport from './useIsElementInViewport';
 import useFooterDisplacement from './useFooterDisplacement';
+import useEnterPageTransition from './useEnterPageTransition';
 
-export { useFooterDisplacement, useIsElementInViewport };
+export {
+   useFooterDisplacement,
+   useIsElementInViewport,
+   useEnterPageTransition,
+};

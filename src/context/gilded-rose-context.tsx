@@ -27,13 +27,14 @@ export const GildedRoseContextProvider = ({
  children: React.ReactNode;
 }) => {
  const initialItems: Item[] = [
-  new Item('Item 3', 10, 20),
+  new Item('Kebab', 10, 20),
   new Item('Aged Brie', 2, 2),
   new Item('Backstage passes to a TAFKAL80ETC concert', 5, 15),
-  new Item('Item 1', 12, 20),
-  new Item('Item 2', 6, 2),
+  new Item('Beverage', 12, 20),
+  new Item('Ramen', 6, 2),
   new Item('Sulfuras', 12, 15),
   new Item('Conjured', 24, 50),
+  new Item('Croissant', 4, 10),
  ];
 
  const [allItems, setAllItems] = useState<Item[]>(initialItems);

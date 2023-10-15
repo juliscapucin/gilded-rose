@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
-   variant: 'primary' | 'secondary';
+   $variant: 'primary' | 'secondary';
    theme: { colors: { secondary: string; primary: string } };
 }
 
 const Button = styled.button<ButtonProps>`
    margin: calc(var(--global-spacing) * 2) auto;
    min-width: var(--button-min-width);
-   background-color: ${({ variant, theme }) =>
-      variant === 'primary'
+   background-color: ${({ $variant, theme }) =>
+      $variant === 'primary'
          ? `${theme.colors.secondary}`
          : `${theme.colors.primary}`};
-   color: ${({ variant, theme }) =>
-      variant === 'primary'
+   color: ${({ $variant, theme }) =>
+      $variant === 'primary'
          ? `${theme.colors.primary}`
          : `${theme.colors.secondary}`};
    border: 1px solid ${({ theme }) => theme.colors.secondary};
@@ -24,12 +24,12 @@ const Button = styled.button<ButtonProps>`
    transition: background-color 0.3s var(--ease-in-out);
 
    &:hover {
-      color: ${({ variant, theme }) =>
-         variant === 'primary'
+      color: ${({ $variant, theme }) =>
+         $variant === 'primary'
             ? `${theme.colors.secondary}`
             : `${theme.colors.primary}`};
-      background-color: ${({ variant, theme }) =>
-         variant === 'primary'
+      background-color: ${({ $variant, theme }) =>
+         $variant === 'primary'
             ? `${theme.colors.primary}`
             : `${theme.colors.secondary}`};
    }
