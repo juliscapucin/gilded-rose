@@ -1,10 +1,14 @@
 'use client';
 
+import { useRef } from 'react';
+
 import { Grid, PageContainer, Paragraph, Title } from '@/components/styles';
 
 export default function page() {
+ const pageRef = useRef(null);
+
  return (
-  <Grid>
+  <Grid ref={pageRef} className='page'>
    <PageContainer>
     <Title $marginMobile={true}>About Gilded Rose</Title>
     <Paragraph>

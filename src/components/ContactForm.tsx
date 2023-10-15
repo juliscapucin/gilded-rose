@@ -74,7 +74,7 @@ export default function ContactForm() {
      onChange={(e) => setMessage(e.target.value)}
     />
    </label>
-   <Button type='submit' variant='primary'>
+   <Button type='submit' $variant='primary'>
     Submit
    </Button>
   </StyledContactForm>

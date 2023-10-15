@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef } from 'react';
+
 import { ContactForm } from '@/components';
 import {
  Grid,
@@ -10,8 +12,10 @@ import {
 } from '@/components/styles';
 
 export default function page() {
+ const pageRef = useRef(null);
+
  return (
-  <Grid>
+  <Grid ref={pageRef} className='page'>
    <PageContainer>
     <Title $marginMobile={true}>Contact Gilded Rose</Title>
     <Subtitle>

@@ -20,7 +20,7 @@ const StyledHero = styled.section`
 
 export default function Home() {
  return (
-  <Grid>
+  <Grid className='page'>
    <StyledHero className='home-hero'>
     <Title $marginMobile={true}>Welcome to Gilded Rose.</Title>
     <Subtitle>

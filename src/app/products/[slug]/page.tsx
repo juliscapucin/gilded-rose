@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useGildedRoseContext } from '@/context';
 
 import { Button, Grid, PageContainer, Title } from '@/components/styles';
-import { breakpoints } from '@/lib';
 import { ButtonBack } from '@/components/buttons';
 
 const StyledProductImage = styled.div`
@@ -25,14 +24,14 @@ export default function Page({ params }: { params: { slug: string } }) {
  });
 
  return (
-  <Grid>
+  <Grid className='page'>
    <ButtonBack />
    <StyledProductImage />
    <PageContainer>
     <Title $marginMobile={false}>{product?.name}</Title>
     <p>Sell In: {product?.sellIn}</p>
     <p>Quality: {product?.quality}</p>
-    <Button variant='primary'>Buy</Button>
+    <Button $variant='primary'>Buy</Button>
    </PageContainer>
   </Grid>
  );
