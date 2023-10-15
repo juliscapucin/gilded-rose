@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { breakpoints } from '@/lib/styles-constants';
 import { ButtonBurger, ButtonClose, ButtonLogo } from '@/components/buttons';
-import { NavLinks } from '@/components';
+import { NavLinks, ThemeSwitcher } from '@/components';
 
 const StyledHeader = styled.header<{ $isOpen: boolean }>`
  position: fixed;
@@ -82,6 +82,7 @@ export default function Header() {
    <StyledHeader $isOpen={isOpen}>
     <ButtonLogo />
     <NavLinks variant='header' />
+    <ThemeSwitcher />
    </StyledHeader>
   </>
  );

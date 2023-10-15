@@ -1,11 +1,16 @@
 'use client';
 
-import { StyledComponentsRegistry, themeDark, themeLight } from '@/lib';
 import styled, { ThemeProvider } from 'styled-components';
+
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+
+import { StyledComponentsRegistry, themes } from '@/lib';
 import { GildedRoseContextProvider } from '@/context';
 
 import { Footer, Header, Meta } from '@/components';
 import { GlobalStyles } from '@/components/styles';
+import path from 'path';
 
 const StyledBody = styled.body`
  background-color: ${({ theme }) => theme.colors.primary};
@@ -17,23 +22,25 @@ const StyledMain = styled.main`
   calc(var(--global-spacing) * 3);
 `;
 
-export default function RootLayout(props: {
- children: React.ReactNode;
- shallowModal: React.ReactNode;
-}) {
+export default function RootLayout(props: { children: React.ReactNode }) {
+ const pathname = usePathname();
+ const [homeTheme, setHomeTheme] = useState(themes.dark);
+
+ useEffect(() => {
+  const theme = sessionStorage.getItem('theme');
+  theme === 'dark' ? setHomeTheme(themes.dark) : setHomeTheme(themes.light);
+ }, [pathname]);
+
  return (
   <html>
    <Meta />
    <StyledComponentsRegistry>
     <GlobalStyles />
-    <ThemeProvider theme={themeDark}>
+    <ThemeProvider theme={homeTheme}>
      <StyledBody>
       <Header />
       <StyledMain>
-       <GildedRoseContextProvider>
-        {props.children}
-        {props.shallowModal}
-       </GildedRoseContextProvider>
+       <GildedRoseContextProvider>{props.children}</GildedRoseContextProvider>
       </StyledMain>
       <Footer />
      </StyledBody>

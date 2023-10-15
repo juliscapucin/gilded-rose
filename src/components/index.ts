@@ -9,6 +9,7 @@ import ProductCard from './ProductCard';
 import ProductImage from './ProductImage';
 import ProductsSection from './ProductsSection';
 import SocialLinks from './SocialLinks';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export {
    ContactForm,
@@ -22,4 +23,5 @@ export {
    ProductImage,
    ProductsSection,
    SocialLinks,
+   ThemeSwitcher,
 };
