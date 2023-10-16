@@ -14,49 +14,54 @@ export default function useAnimateOnPathnameChange() {
   if (typeof window == 'undefined') return;
   gsap.registerPlugin(SplitText);
 
-  // Create a new SplitText instance
-  const splitText = new SplitText('[data-animation-title]', {
-   type: 'words, chars, lines',
-  });
+  // If pathname is root, animate only overlay and hero
+  if (pathname === '/') {
+   const overlay = document.querySelector('[data-animation-overlay]');
+   const homeHero = document.querySelector('[data-animation-home-hero]');
+   const footer = document.querySelector('[data-animation-footer]');
 
-  const overlay = document.querySelector('[data-animation-overlay]');
-  const page = document.querySelector('[data-animation-page]');
+   if (!overlay || !footer || !homeHero) return;
 
-  //   if (!overlay || !page) return;
+   gsap.fromTo(overlay, { xPercent: 0 }, { xPercent: 100 });
 
-  // Page transition enter on pathname change
-  const tl = gsap.timeline();
+   gsap.registerPlugin(ScrollTrigger);
 
-  tl
-   .fromTo('[data-animation-overlay]', { xPercent: 0 }, { xPercent: 100 })
-   .fromTo('[data-animation-page]', { xPercent: -20 }, { xPercent: 0 }, '<')
-   .fromTo(
-    splitText?.chars,
-    { y: 50 },
-    { y: 0, stagger: 0.05, duration: 0.2, ease: 'back' },
-    '-=0.3'
-   );
+   // Animate Hero on home page according to footer position
+   const footerDisplacement = gsap.timeline({
+    scrollTrigger: {
+     trigger: footer,
+     start: 'top 95%',
+     toggleActions: 'play none none reverse',
+     scrub: 1,
+    },
+   });
 
-  // Animate Hero on home page according to footer position
-  if (pathname !== '/') return;
-  const homeHero = document.querySelector('[data-animation-home-hero]');
-  const footer = document.querySelector('[data-animation-footer]');
+   // Animation to scrub
+   footerDisplacement
+    .set(homeHero, { yPercent: 0 })
+    .fromTo(homeHero, { yPercent: 0 }, { yPercent: -100 });
 
-  if (!footer || !homeHero) return;
-  gsap.registerPlugin(ScrollTrigger);
+   // If pathname is not root, animate overlay, page and title
+  } else {
+   const splitText = new SplitText('[data-animation-title]', {
+    type: 'words, chars, lines',
+   });
 
-  const footerDisplacement = gsap.timeline({
-   scrollTrigger: {
-    trigger: footer,
-    start: 'top 95%',
-    toggleActions: 'play none none reverse',
-    scrub: 1,
-   },
-  });
+   const overlay = document.querySelector('[data-animation-overlay]');
+   const page = document.querySelector('[data-animation-page]');
 
-  // Animation to scrub
-  footerDisplacement
-   .set(homeHero, { yPercent: 0 })
-   .fromTo(homeHero, { yPercent: 0 }, { yPercent: -100 });
+   // Page transition enter on pathname change
+   const tl = gsap.timeline();
+
+   tl
+    .fromTo(overlay, { xPercent: 0 }, { xPercent: 100 })
+    .fromTo(page, { xPercent: -20 }, { xPercent: 0 }, '<')
+    .fromTo(
+     splitText?.chars,
+     { y: 50 },
+     { y: 0, stagger: 0.05, duration: 0.2, ease: 'back' },
+     '-=0.3'
+    );
+  }
  }, [pathname]);
 }

@@ -10,7 +10,9 @@ export default function ProductNotFound() {
    <ButtonBack />
    <ProductImage productSlug={'not-found'} />
    <PageContainer>
-    <Title $margin={false}>Product not found</Title>
+    <Title $margin={false} data-animation-title>
+     Product not found
+    </Title>
     <p>The product you requested does not exist</p>
    </PageContainer>
   </>

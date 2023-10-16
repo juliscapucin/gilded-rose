@@ -21,7 +21,9 @@ export default function Page({ params }: { params: { slug: string } }) {
      <ButtonBack />
      <ProductImage productSlug={params.slug} />
      <PageContainer>
-      <Title $margin={false}>{product?.name}</Title>
+      <Title $margin={false} data-animation-title>
+       {product?.name}
+      </Title>
       <p>Sell In: {product?.sellIn}</p>
       <p>Quality: {product?.quality}</p>
       <Button $variant='primary'>Buy</Button>
