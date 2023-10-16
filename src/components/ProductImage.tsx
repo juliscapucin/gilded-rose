@@ -25,6 +25,7 @@ const StyledProductBackground = styled.div`
  left: 0;
  width: 100%;
  height: 100%;
+ border-radius: var(--border-radius);
  opacity: 0.4;
  background-color: ${({ theme }) => theme.colors.customColor1};
 `;

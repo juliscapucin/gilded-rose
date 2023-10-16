@@ -18,9 +18,15 @@ const StyledButtonLogo = styled.button`
 
 export default function ButtonLogo() {
  const router = useRouter();
+ const pathname = usePathname();
+
+ const handleButtonLogoClick = () => {
+  if (pathname === '/') return;
+  exitPageTransition(() => router.push('/'));
+ };
 
  return (
-  <StyledButtonLogo onClick={() => exitPageTransition(() => router.push('/'))}>
+  <StyledButtonLogo onClick={handleButtonLogoClick}>
    <span>G</span>
    <span>–</span>
    <span>R</span>

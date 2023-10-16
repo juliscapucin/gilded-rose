@@ -1,7 +1,6 @@
 'use client';
 
 import { styled } from 'styled-components';
-import { useRouter, usePathname } from 'next/navigation';
 import { useThemeStorage } from '@/hooks';
 
 const StyledThemeSwitcher = styled.button`
@@ -10,8 +9,6 @@ const StyledThemeSwitcher = styled.button`
 `;
 
 export default function ThemeSwitcher() {
- const router = useRouter();
- const pathname = usePathname();
  const { theme, setTheme } = useThemeStorage();
 
  const handleThemeChange = () => {
@@ -21,7 +18,7 @@ export default function ThemeSwitcher() {
 
  return (
   <StyledThemeSwitcher onClick={(e) => handleThemeChange()}>
-   Theme: {theme}
+   Theme: {theme ? theme : 'light'}
   </StyledThemeSwitcher>
  );
 }

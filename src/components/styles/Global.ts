@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
    --font-primary: 'ff-real-headline-pro', sans-serif;
    --font-secondary: 'ff-real-text-pro', sans-serif;
 
-   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
    --global-spacing: 8px;
    --header-height: 80px;
