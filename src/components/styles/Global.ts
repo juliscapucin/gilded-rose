@@ -15,13 +15,13 @@ const GlobalStyles = createGlobalStyle`
    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
    --global-spacing: 8px;
-   --header-height: 80px;
+   --header-height: 112px;
    --button-min-width: 300px;
    --top-margin: 200px;
 
    --text-display: 91px;
    --text-headline: 57px;
-   --text-subtitle: 36px;
+   --text-subtitle: 32px;
 
    --text-large: 18px;
    --text-medium: 16px;

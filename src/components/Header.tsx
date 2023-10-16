@@ -8,7 +8,7 @@ import { breakpoints } from '@/lib/styles-constants';
 import { ButtonBurger, ButtonClose, ButtonLogo } from '@/components/buttons';
 import { NavLinks, ThemeSwitcher } from '@/components';
 
-const StyledHeader = styled.header<{ $isOpen: boolean }>`
+const StyledHeader = styled.header<{ $isOpen: boolean; $isHome: boolean }>`
  position: fixed;
  top: 0;
  left: 0;
@@ -29,13 +29,15 @@ const StyledHeader = styled.header<{ $isOpen: boolean }>`
 
  @media (min-width: ${breakpoints.desktop}) {
   flex-direction: row;
-  height: var(--header-height);
-  width: 55%;
-  gap: 0;
   justify-content: space-between;
+  gap: 0;
+  height: var(--header-height);
+  width: ${({ $isHome }) => ($isHome ? '55%' : '100%')};
+  padding: calc(var(--global-spacing) * 3) calc(var(--global-spacing) * 3);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
   text-align: left;
   transform: translate3d(0, 0, 0);
-  top: 0;
+  transition: all 0.4s var(--ease-in-out);
  }
 `;
 
@@ -79,7 +81,7 @@ export default function Header() {
      </>
     )}
    </StyledMobileHeader>
-   <StyledHeader $isOpen={isOpen}>
+   <StyledHeader $isOpen={isOpen} $isHome={pathname === '/' ? true : false}>
     <ButtonLogo />
     <NavLinks variant='header' />
     <ThemeSwitcher />

@@ -19,9 +19,9 @@ export default function page() {
     <Subtitle>
      Send us an email or give us a call, we would love to hear from you!
     </Subtitle>
-    <Paragraph>
+    <Subtitle>
      <strong>Phone:</strong> (555) 555-5555
-    </Paragraph>
+    </Subtitle>
     <ContactForm />
    </PageContainer>
   </Grid>
