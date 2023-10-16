@@ -18,7 +18,7 @@ export default function ThemeSwitcher() {
 
  return (
   <StyledThemeSwitcher onClick={(e) => handleThemeChange()}>
-   Theme: {theme ? theme : 'light'}
+   Theme: {theme ? theme : 'dark'}
   </StyledThemeSwitcher>
  );
 }

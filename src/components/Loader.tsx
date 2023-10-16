@@ -13,7 +13,11 @@ const StyledLoader = styled.div`
  display: flex;
  justify-content: center;
  align-items: center;
- background-color: ${({ theme }) => theme.colors.primary};
+ transform: translate3d(0, -70px, 0);
+
+ img {
+  filter: invert(0.5);
+ }
 `;
 
 const Loading = () => {
