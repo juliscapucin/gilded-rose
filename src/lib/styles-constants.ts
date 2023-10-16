@@ -10,8 +10,8 @@ const themes = {
    },
    light: {
       colors: {
-         primary: '#c39999',
-         secondary: '#c30000',
+         primary: '#ceb7b7',
+         secondary: '#bf0202',
          customColor1: '#725757',
          customColor2: '#A4BBB3',
          customColor3: '#15162B',
