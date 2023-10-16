@@ -7,6 +7,13 @@ import { NavLink } from '@/components/styles';
 import { breakpoints } from '@/lib/styles-constants';
 import { useAnimateOnPathnameChange } from '@/hooks';
 
+const navLinks = [
+ { href: '/products', label: 'Products' },
+ { href: '/sale', label: 'Sale' },
+ { href: '/about', label: 'About' },
+ { href: '/contact', label: 'Contact' },
+];
+
 const StyledNavLinks = styled.nav<{ $variant: string }>`
  display: flex;
  flex-direction: column;
@@ -48,13 +55,6 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
   }
  }
 `;
-
-const navLinks = [
- { href: '/products', label: 'Products' },
- { href: '/sale', label: 'Sale' },
- { href: '/about', label: 'About' },
- { href: '/contact', label: 'Contact Us' },
-];
 
 export default function NavLinks({ variant }: { variant: string }) {
  const router = useRouter();

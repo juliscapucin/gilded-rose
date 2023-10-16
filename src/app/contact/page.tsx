@@ -13,7 +13,9 @@ export default function page() {
  return (
   <Grid data-animation-page>
    <PageContainer>
-    <Title $margin={true}>Contact Gilded Rose</Title>
+    <Title $margin={true} data-animation-title>
+     Contact
+    </Title>
     <Subtitle>
      Send us an email or give us a call, we would love to hear from you!
     </Subtitle>
