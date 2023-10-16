@@ -5,7 +5,7 @@ import { exitPageTransition } from '@/animations';
 
 import { NavLink } from '@/components/styles';
 import { breakpoints } from '@/lib/styles-constants';
-import { useAnimateOnPathnameChange } from '@/hooks';
+import { useAnimateOnRouteChange } from '@/hooks';
 
 const navLinks = [
  { href: '/products', label: 'Products' },
@@ -60,8 +60,8 @@ export default function NavLinks({ variant }: { variant: string }) {
  const router = useRouter();
  const pathname = usePathname();
 
- // Triggers Enter Page transition every time the pathname changes
- useAnimateOnPathnameChange();
+ // Triggers page transitions and animations every time the pathname changes
+ useAnimateOnRouteChange();
 
  return (
   <StyledNavLinks $variant={variant}>

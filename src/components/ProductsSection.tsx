@@ -35,38 +35,48 @@ const ContainerThumbs = styled.section`
 
 export default function ProductsSection({ variant }: { variant: string }) {
  const { allItems } = useGildedRoseContext();
+ const [inventory, setInventory] = useState<Product[] | null>(null);
  const [itemsNew, setItemsNew] = useState<Product[] | null>(null);
  const [itemsSale, setItemsSale] = useState<Product[] | null>(null);
 
- // New Items (first 5 items sorted by sellIn and quality)
  useEffect(() => {
-  if (!allItems && variant !== 'new') return;
+  if (!allItems) return;
 
-  const newItems = allItems.sort((a, b) => {
-   // First, compare by sellIn in descending order
-   if (b.sellIn !== a.sellIn) {
-    return b.sellIn - a.sellIn;
-   }
-
-   // If sellIn values are equal, compare by quality in descending order
-   return b.quality - a.quality;
-  });
-
-  // Get the first 5 items
-  const first5NewItems = newItems.slice(0, 5);
-
-  setItemsNew(first5NewItems);
- }, [allItems]);
-
- // Sale Items (items with sellIn <= 1)
- useEffect(() => {
-  if (!allItems && variant !== 'sale') return;
-
-  const saleItems = allItems.filter(
-   (item) => item.sellIn <= 2 && item.quality <= 2
+  // Remove items with sellin <= 0 and quality <= 0
+  const filteredInventory = allItems.filter(
+   (item) => item.sellIn > 0 || item.quality > 0
   );
 
-  setItemsSale(saleItems);
+  setInventory(filteredInventory);
+
+  // New Items (first 5 items sorted by sellIn and quality)
+  if (variant === 'new') {
+   const newItems = filteredInventory.sort((a, b) => {
+    // First, compare by sellIn in descending order
+    if (b.sellIn !== a.sellIn) {
+     return b.sellIn - a.sellIn;
+    }
+
+    // If sellIn values are equal, compare by quality in descending order
+    return b.quality - a.quality;
+   });
+
+   // Get the first 5 items
+   const first5NewItems = newItems.slice(0, 5);
+   setItemsNew(first5NewItems);
+
+   // Get Sale Items (items with sellIn <= 1)
+  } else if (variant === 'sale') {
+   const saleItems = filteredInventory.filter(
+    (item) =>
+     item.name !== 'Sulfuras' &&
+     !item.name.includes('Backstage') &&
+     !item.name.includes('Brie') &&
+     item.sellIn <= 2
+   );
+
+   setItemsSale(saleItems);
+  }
  }, [allItems]);
 
  return variant === 'new' ? (
@@ -83,15 +93,15 @@ export default function ProductsSection({ variant }: { variant: string }) {
   </>
  ) : variant === 'all' ? (
   <>
-   {allItems && (
+   {inventory && (
     // Render all items in products page
     <ContainerThumbs>
-     {allItems.map((item, index) => {
+     {inventory.map((item, index) => {
       return <ProductCard item={item} key={`product-card-${index}`} />;
      })}
     </ContainerThumbs>
    )}
-   {!allItems && <Loader />}
+   {!inventory && <Loader />}
   </>
  ) : (
   variant === 'sale' && (

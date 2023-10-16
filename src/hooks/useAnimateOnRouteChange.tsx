@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
-export default function useAnimateOnPathnameChange() {
+export default function useAnimateOnRouteChange() {
  const pathname = usePathname();
 
  useEffect(() => {

@@ -1,5 +1,4 @@
-import useIsElementInViewport from './useIsElementInViewport';
-import useAnimateOnPathnameChange from './useAnimateOnPathnameChange';
+import useAnimateOnRouteChange from './useAnimateOnRouteChange';
 import useThemeStorage from './useThemeStorage';
 
-export { useIsElementInViewport, useAnimateOnPathnameChange, useThemeStorage };
+export { useAnimateOnRouteChange, useThemeStorage };

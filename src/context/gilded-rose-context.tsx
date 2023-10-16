@@ -1,12 +1,23 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Item, GildedRose } from '@/utils/gilded-rose';
 
-// Define the context
-interface GildedRoseContextType {
+type GildedRoseContextType = {
  allItems: Item[];
  updateQuality: () => void;
-}
+};
 
+const inventory = [
+ { name: 'Kebab', sellIn: 10, quality: 20 },
+ { name: 'Aged Brie', sellIn: 2, quality: 2 },
+ { name: 'Backstage passes to a TAFKAL80ETC concert', sellIn: 1, quality: 15 },
+ { name: 'Beverage', sellIn: 12, quality: 20 },
+ { name: 'Ramen', sellIn: 1, quality: 2 },
+ { name: 'Sulfuras', sellIn: 12, quality: 15 },
+ { name: 'Conjured', sellIn: 24, quality: 50 },
+ { name: 'Croissant', sellIn: 0, quality: 1 },
+];
+
+// Define the context
 const GildedRoseContext = createContext<GildedRoseContextType | undefined>(
  undefined
 );
@@ -26,16 +37,9 @@ export const GildedRoseContextProvider = ({
 }: {
  children: React.ReactNode;
 }) => {
- const initialItems: Item[] = [
-  new Item('Kebab', 10, 20),
-  new Item('Aged Brie', 2, 2),
-  new Item('Backstage passes to a TAFKAL80ETC concert', 5, 15),
-  new Item('Beverage', 12, 20),
-  new Item('Ramen', 6, 2),
-  new Item('Sulfuras', 12, 15),
-  new Item('Conjured', 24, 50),
-  new Item('Croissant', 4, 10),
- ];
+ const initialItems = inventory.map(
+  (item) => new Item(item.name, item.sellIn, item.quality)
+ );
 
  const [allItems, setAllItems] = useState<Item[]>(initialItems);
  const gildedRose = new GildedRose([...allItems]);
@@ -44,10 +48,6 @@ export const GildedRoseContextProvider = ({
   const updatedItems = gildedRose.updateQuality();
   setAllItems(updatedItems);
  };
-
- useEffect(() => {
-  updateQuality();
- }, []);
 
  return (
   <GildedRoseContext.Provider value={{ allItems, updateQuality }}>
