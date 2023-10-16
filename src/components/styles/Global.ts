@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
       --text-display: 64px;
       --text-headline: 42px;
-      --text-subtitle: 32px;
+      --text-subtitle: 28px;
    }
 }
 

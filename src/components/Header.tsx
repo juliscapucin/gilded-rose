@@ -46,7 +46,7 @@ const StyledMobileHeader = styled.div`
  position: fixed;
  display: flex;
  justify-content: space-between;
- z-index: 20;
+ z-index: 30;
  top: 0;
  left: 0;
  right: 0;

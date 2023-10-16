@@ -16,10 +16,6 @@ const StyledButtonBurger = styled.button`
  justify-content: center;
  gap: var(--global-spacing);
 
- @media (min-width: ${breakpoints.tablet}) {
-  display: none;
- }
-
  .line {
   pointer-events: none;
   width: 100%;

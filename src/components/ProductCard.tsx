@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { exitPageTransition } from '@/animations';
 import { styled } from 'styled-components';
 import { Product } from '@/types';
 import { ProductImage } from '@/components';
@@ -49,7 +49,7 @@ export default function ProductCard({ item }: ProductCardProps) {
 
  const handleProductClick = (name: string) => {
   const slug = name.toLowerCase().split(' ').slice(0, 2).join('-');
-  router.push(`/products/${slug}`);
+  exitPageTransition(() => router.push(`/products/${slug}`));
  };
 
  return (

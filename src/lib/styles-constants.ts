@@ -11,7 +11,7 @@ const themes = {
    light: {
       colors: {
          primary: '#ceb7b7',
-         secondary: '#bf0202',
+         secondary: '#af0101',
          customColor1: '#725757',
          customColor2: '#A4BBB3',
          customColor3: '#15162B',

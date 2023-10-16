@@ -14,7 +14,7 @@ export default function useAnimateOnRouteChange() {
   if (typeof window == 'undefined') return;
   gsap.registerPlugin(SplitText);
 
-  // If pathname is root, animate only overlay and hero
+  // If pathname is root, animate only transition overlay and home hero
   if (pathname === '/') {
    const overlay = document.querySelector('[data-animation-overlay]');
    const homeHero = document.querySelector('[data-animation-home-hero]');
@@ -39,9 +39,9 @@ export default function useAnimateOnRouteChange() {
    // Animation to scrub
    footerDisplacement
     .set(homeHero, { yPercent: 0 })
-    .fromTo(homeHero, { yPercent: 0 }, { yPercent: -100 });
+    .to(homeHero, { yPercent: -100 });
 
-   // If pathname is not root, animate overlay, page and title
+   // If pathname is not root, animate transition overlay, page and title
   } else {
    const splitText = new SplitText('[data-animation-title]', {
     type: 'words, chars, lines',
@@ -57,7 +57,7 @@ export default function useAnimateOnRouteChange() {
     .fromTo(overlay, { xPercent: 0 }, { xPercent: 100 })
     .fromTo(page, { xPercent: -20 }, { xPercent: 0 }, '<')
     .fromTo(
-     splitText?.chars,
+     splitText?.lines,
      { y: 50 },
      { y: 0, stagger: 0.05, duration: 0.2, ease: 'back' },
      '-=0.3'

@@ -1,13 +1,7 @@
 'use client';
 
 import { ContactForm } from '@/components';
-import {
- Grid,
- PageContainer,
- Paragraph,
- Subtitle,
- Title,
-} from '@/components/styles';
+import { Grid, PageContainer, Subtitle, Title } from '@/components/styles';
 
 export default function page() {
  return (
