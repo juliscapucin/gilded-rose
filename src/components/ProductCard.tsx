@@ -33,7 +33,7 @@ const StyledProductInfo = styled.div`
  align-items: flex-start;
  gap: var(--global-spacing);
  text-align: left;
- z-index: 10;
+ z-index: 5;
  color: ${({ theme }) => theme.colors.secondary};
 
  h2 {

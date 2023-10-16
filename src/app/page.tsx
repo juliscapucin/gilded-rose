@@ -15,6 +15,7 @@ const StyledHomeHero = styled.section`
   margin-top: 0;
   left: calc(var(--global-spacing) * 3);
   width: 50%;
+  max-width: 800px;
  }
 `;
 

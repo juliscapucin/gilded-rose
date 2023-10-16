@@ -14,6 +14,7 @@ const StyledHeader = styled.header<{ $isOpen: boolean; $isHome: boolean }>`
  left: 0;
  z-index: 10;
  width: 100%;
+ max-width: var(--max-width);
  height: 100%;
  padding: calc(var(--global-spacing) * 10) calc(var(--global-spacing) * 3) 0;
  display: flex;

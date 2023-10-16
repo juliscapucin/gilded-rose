@@ -13,6 +13,7 @@ import { GlobalStyles } from '@/components/styles';
 const StyledBody = styled.body`
  background-color: ${({ theme }) => theme.colors.primary};
  color: ${({ theme }) => theme.colors.secondary};
+ margin: 0 auto;
 `;
 
 const StyledMain = styled.main`

@@ -62,6 +62,7 @@ body {
   overflow-x: hidden;
   font-family: var(--font-secondary);
   font-weight: var(--font-weight-light);
+  position: relative;
 }
 
 input, textarea, button {
