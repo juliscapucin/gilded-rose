@@ -31,7 +31,7 @@ const StyledButtonClose = styled.button`
 
 export default function ButtonClose({ action }: ButtonCloseProps) {
  return (
-  <StyledButtonClose onClick={(e) => action(e)}>
+  <StyledButtonClose onClick={(e) => action(e)} aria-label='Close Menu'>
    <div className='line'></div>
    <div className='line'></div>
   </StyledButtonClose>

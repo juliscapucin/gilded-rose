@@ -30,7 +30,7 @@ const StyledButtonBurger = styled.button`
 
 export default function ButtonBurger({ action }: ButtonBurgerProps) {
  return (
-  <StyledButtonBurger onClick={action}>
+  <StyledButtonBurger onClick={action} aria-label='Open Menu'>
    <div className='line'></div>
    <div className='line'></div>
   </StyledButtonBurger>
