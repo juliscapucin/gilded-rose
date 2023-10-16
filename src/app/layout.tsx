@@ -3,7 +3,6 @@
 import styled, { ThemeProvider } from 'styled-components';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 
 import { StyledComponentsRegistry, themes } from '@/lib';
 import { GildedRoseContextProvider } from '@/context';
@@ -40,7 +39,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
  }, []);
 
  return (
-  <html>
+  <html lang='en'>
+   <title>Gilded Rose</title>
    <Meta />
    <StyledComponentsRegistry>
     <GlobalStyles />

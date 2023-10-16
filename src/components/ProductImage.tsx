@@ -27,19 +27,6 @@ const StyledProductBackground = styled.div`
  height: 100%;
  opacity: 0.4;
  background-color: ${({ theme }) => theme.colors.customColor1};
-
- > div:first-child {
-  background-color: ${({ theme }) => theme.colors.customColor1};
- }
- > div:nth-child(2) {
-  background-color: ${({ theme }) => theme.colors.customColor2};
- }
- > div:nth-child(3) {
-  background-color: ${({ theme }) => theme.colors.customColor3};
- }
- > div:nth-child(4) {
-  background-color: ${({ theme }) => theme.colors.secondary};
- }
 `;
 
 export default function ProductImage({ productSlug }: { productSlug: string }) {
@@ -51,10 +38,6 @@ export default function ProductImage({ productSlug }: { productSlug: string }) {
      alt={`Icon representing ${productSlug}`}
      fill={true}
     />
-    {/* <div></div>
-    <div></div>
-    <div></div>
-    <div></div> */}
    </StyledProductBackground>
   </StyledProductImage>
  );

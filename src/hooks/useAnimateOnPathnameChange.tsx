@@ -19,6 +19,11 @@ export default function useAnimateOnPathnameChange() {
    type: 'words, chars, lines',
   });
 
+  const overlay = document.querySelector('[data-animation-overlay]');
+  const page = document.querySelector('[data-animation-page]');
+
+  //   if (!overlay || !page) return;
+
   // Page transition enter on pathname change
   const tl = gsap.timeline();
 
@@ -26,18 +31,23 @@ export default function useAnimateOnPathnameChange() {
    .fromTo('[data-animation-overlay]', { xPercent: 0 }, { xPercent: 100 })
    .fromTo('[data-animation-page]', { xPercent: -20 }, { xPercent: 0 }, '<')
    .fromTo(
-    splitText.chars,
+    splitText?.chars,
     { y: 50 },
-    { y: 0, stagger: 0.05, duration: 0.2, ease: 'back' }
+    { y: 0, stagger: 0.05, duration: 0.2, ease: 'back' },
+    '-=0.3'
    );
 
   // Animate Hero on home page according to footer position
   if (pathname !== '/') return;
+  const homeHero = document.querySelector('[data-animation-home-hero]');
+  const footer = document.querySelector('[data-animation-footer]');
+
+  if (!footer || !homeHero) return;
   gsap.registerPlugin(ScrollTrigger);
 
   const footerDisplacement = gsap.timeline({
    scrollTrigger: {
-    trigger: '[data-animation-footer]',
+    trigger: footer,
     start: 'top 95%',
     toggleActions: 'play none none reverse',
     scrub: 1,
@@ -45,10 +55,8 @@ export default function useAnimateOnPathnameChange() {
   });
 
   // Animation to scrub
-  footerDisplacement.fromTo(
-   '[data-animation-home-hero]',
-   { yPercent: 0 },
-   { yPercent: -100 }
-  );
+  footerDisplacement
+   .set(homeHero, { yPercent: 0 })
+   .fromTo(homeHero, { yPercent: 0 }, { yPercent: -100 });
  }, [pathname]);
 }

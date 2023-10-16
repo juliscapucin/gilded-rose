@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { styled } from 'styled-components';
 
 import { ButtonLogo } from '@/components/buttons';
@@ -24,8 +23,6 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer() {
- const footerRef = useRef(null);
-
  return (
   <StyledFooter data-animation-footer>
    <NavLinks variant='footer' />
