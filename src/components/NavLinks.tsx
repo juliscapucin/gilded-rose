@@ -5,7 +5,7 @@ import { exitPageTransition } from '@/animations';
 
 import { NavLink } from '@/components/styles';
 import { breakpoints } from '@/lib/styles-constants';
-import { useEnterPageTransition } from '@/hooks';
+import { useAnimateOnPathnameChange } from '@/hooks';
 
 const StyledNavLinks = styled.nav<{ $variant: string }>`
  display: flex;
@@ -61,7 +61,7 @@ export default function NavLinks({ variant }: { variant: string }) {
  const pathname = usePathname();
 
  // Triggers Enter Page transition every time the pathname changes
- useEnterPageTransition();
+ useAnimateOnPathnameChange();
 
  return (
   <StyledNavLinks $variant={variant}>

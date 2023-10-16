@@ -1,11 +1,11 @@
 import useIsElementInViewport from './useIsElementInViewport';
 import useFooterDisplacement from './useFooterDisplacement';
-import useEnterPageTransition from './useEnterPageTransition';
+import useAnimateOnPathnameChange from './useAnimateOnPathnameChange';
 import useThemeStorage from './useThemeStorage';
 
 export {
    useFooterDisplacement,
    useIsElementInViewport,
-   useEnterPageTransition,
+   useAnimateOnPathnameChange,
    useThemeStorage,
 };
