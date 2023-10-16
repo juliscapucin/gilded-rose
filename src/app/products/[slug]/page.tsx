@@ -2,7 +2,7 @@
 
 import { useGildedRoseContext } from '@/context';
 
-import { ProductImage } from '@/components';
+import { ProductImage, ProductNotFound } from '@/components';
 import { Button, Grid, PageContainer, Title } from '@/components/styles';
 import { ButtonBack } from '@/components/buttons';
 
@@ -16,14 +16,20 @@ export default function Page({ params }: { params: { slug: string } }) {
 
  return (
   <Grid data-animation-page>
-   <ButtonBack />
-   <ProductImage productSlug={params.slug} />
-   <PageContainer>
-    <Title $marginMobile={false}>{product?.name}</Title>
-    <p>Sell In: {product?.sellIn}</p>
-    <p>Quality: {product?.quality}</p>
-    <Button $variant='primary'>Buy</Button>
-   </PageContainer>
+   {product ? (
+    <>
+     <ButtonBack />
+     <ProductImage productSlug={params.slug} />
+     <PageContainer>
+      <Title $margin={false}>{product?.name}</Title>
+      <p>Sell In: {product?.sellIn}</p>
+      <p>Quality: {product?.quality}</p>
+      <Button $variant='primary'>Buy</Button>
+     </PageContainer>
+    </>
+   ) : (
+    <ProductNotFound />
+   )}
   </Grid>
  );
 }

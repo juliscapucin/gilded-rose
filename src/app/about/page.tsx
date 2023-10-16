@@ -35,7 +35,7 @@ export default function page() {
  return (
   <Grid data-animation-page>
    <PageContainer>
-    <Title $marginMobile={true}>About Gilded Rose</Title>
+    <Title $margin={true}>About Gilded Rose</Title>
     {aboutContent.split('<p>').map((paragraph, index) => {
      const cleanParagraph = paragraph.replace('</p>', '');
      return (

@@ -8,7 +8,7 @@ export default function Page() {
  return (
   <Grid>
    <PageContainer>
-    <Title>Something went wrong :(</Title>
+    <Title $margin={true}>Something went wrong :(</Title>
     <Subtitle>The page you requested does not exist.</Subtitle>
     <Link href={'/'}>Go back home</Link>
    </PageContainer>
