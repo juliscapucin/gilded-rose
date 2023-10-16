@@ -15,21 +15,24 @@ const StyledHomeHero = styled.section`
   margin-top: 0;
   left: calc(var(--global-spacing) * 3);
   width: 50%;
+  max-width: 800px;
  }
 `;
 
 export default function Home() {
  return (
-  <Grid data-animation-page>
-   <StyledHomeHero>
-    <Title $marginMobile={true}>Welcome to Gilded Rose.</Title>
+  <>
+   <StyledHomeHero data-animation-home-hero>
+    <Title $margin={true}>Welcome to Gilded Rose.</Title>
     <Subtitle>
      We are a small inn with a prime location in a prominent city ran by a
      friendly innkeeper named Allison. We also buy and sell only the finest
      goods.
     </Subtitle>
    </StyledHomeHero>
-   <ProductsSection variant={'new'} />
-  </Grid>
+   <Grid data-animation-page>
+    <ProductsSection variant={'new'} />
+   </Grid>
+  </>
  );
 }

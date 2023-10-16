@@ -1,13 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
-import { usePathname } from 'next/navigation';
 import { styled } from 'styled-components';
 
 import { ButtonLogo } from '@/components/buttons';
 import { NavLinks, SocialLinks } from '@/components';
 import { breakpoints } from '@/lib/styles-constants';
-import { useFooterDisplacement } from '@/hooks';
 
 const StyledFooter = styled.footer`
  padding: calc(var(--global-spacing) * 10) calc(var(--global-spacing) * 3)
@@ -26,14 +23,8 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer() {
- const footerRef = useRef(null);
-
- useFooterDisplacement(footerRef);
-
- const pathname = usePathname();
-
  return (
-  <StyledFooter ref={footerRef}>
+  <StyledFooter data-animation-footer>
    <NavLinks variant='footer' />
    <SocialLinks />
    <div>

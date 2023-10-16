@@ -16,10 +16,6 @@ const StyledButtonBurger = styled.button`
  justify-content: center;
  gap: var(--global-spacing);
 
- @media (min-width: ${breakpoints.tablet}) {
-  display: none;
- }
-
  .line {
   pointer-events: none;
   width: 100%;
@@ -30,7 +26,7 @@ const StyledButtonBurger = styled.button`
 
 export default function ButtonBurger({ action }: ButtonBurgerProps) {
  return (
-  <StyledButtonBurger onClick={action}>
+  <StyledButtonBurger onClick={action} aria-label='Open Menu'>
    <div className='line'></div>
    <div className='line'></div>
   </StyledButtonBurger>

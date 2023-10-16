@@ -6,10 +6,12 @@ import { Grid, PageContainer, Subtitle, Title } from '@/components/styles';
 
 export default function Page() {
  return (
-  <Grid>
+  <Grid data-animation-page>
    <PageContainer>
-    <Title>Something went wrong :(</Title>
-    <Subtitle>The page you're looking for doesn't exist.</Subtitle>
+    <Title $margin={true} data-animation-title>
+     Oops!
+    </Title>
+    <Subtitle>The page you requested does not exist.</Subtitle>
     <Link href={'/'}>Go back home</Link>
    </PageContainer>
   </Grid>

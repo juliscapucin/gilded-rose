@@ -1,11 +1,4 @@
-import useIsElementInViewport from './useIsElementInViewport';
-import useFooterDisplacement from './useFooterDisplacement';
-import useEnterPageTransition from './useEnterPageTransition';
+import useAnimateOnRouteChange from './useAnimateOnRouteChange';
 import useThemeStorage from './useThemeStorage';
 
-export {
-   useFooterDisplacement,
-   useIsElementInViewport,
-   useEnterPageTransition,
-   useThemeStorage,
-};
+export { useAnimateOnRouteChange, useThemeStorage };

@@ -7,6 +7,7 @@ import Meta from './Meta';
 import NavLinks from './NavLinks';
 import ProductCard from './ProductCard';
 import ProductImage from './ProductImage';
+import ProductNotFound from './ProductNotFound';
 import ProductsSection from './ProductsSection';
 import SocialLinks from './SocialLinks';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -21,6 +22,7 @@ export {
    NavLinks,
    ProductCard,
    ProductImage,
+   ProductNotFound,
    ProductsSection,
    SocialLinks,
    ThemeSwitcher,

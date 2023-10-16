@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { exitPageTransition } from '@/animations';
 import { styled } from 'styled-components';
 import { Product } from '@/types';
 import { ProductImage } from '@/components';
@@ -17,7 +17,7 @@ const StyledProductCard = styled.button`
  width: 100%;
  aspect-ratio: 1 / 1;
  border-radius: var(--border-radius);
- transition: all 0.2s var(--ease-in-out);
+ transition: transform 0.25s var(--ease-in-out);
 
  &:hover {
   transform: scale(1.1);
@@ -33,7 +33,7 @@ const StyledProductInfo = styled.div`
  align-items: flex-start;
  gap: var(--global-spacing);
  text-align: left;
- z-index: 10;
+ z-index: 5;
  color: ${({ theme }) => theme.colors.secondary};
 
  h2 {
@@ -44,18 +44,16 @@ const StyledProductInfo = styled.div`
 export default function ProductCard({ item }: ProductCardProps) {
  const router = useRouter();
  const { name } = item;
+ // Generate slug based on product name
  const productSlug = name.toLowerCase().split(' ').slice(0, 2).join('-');
 
- const handleProductModal = (
-  e: React.MouseEvent<HTMLButtonElement>,
-  name: string
- ) => {
+ const handleProductClick = (name: string) => {
   const slug = name.toLowerCase().split(' ').slice(0, 2).join('-');
-  router.push(`/products/${slug}`);
+  exitPageTransition(() => router.push(`/products/${slug}`));
  };
 
  return (
-  <StyledProductCard onClick={(e) => handleProductModal(e, name)}>
+  <StyledProductCard onClick={(e) => handleProductClick(name)}>
    <StyledProductInfo>
     <h2>{name}</h2>
    </StyledProductInfo>

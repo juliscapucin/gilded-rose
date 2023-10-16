@@ -1,5 +1,8 @@
-import Link from 'next/link';
 import { styled } from 'styled-components';
+import { useRouter } from 'next/navigation';
+
+import { NavLink } from '@/components/styles';
+import { exitPageTransition } from '@/animations';
 
 const StyledButtonBack = styled.div`
  grid-column: 1 / span 11;
@@ -9,9 +12,13 @@ const StyledButtonBack = styled.div`
 `;
 
 export default function ButtonBack() {
+ const router = useRouter();
+
  return (
   <StyledButtonBack>
-   <Link href='/products'>Back</Link>
+   <NavLink onClick={() => exitPageTransition(() => router.push('/products'))}>
+    Back to Products
+   </NavLink>
   </StyledButtonBack>
  );
 }
