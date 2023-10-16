@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import { StyledComponentsRegistry, themes } from '@/lib';
 import { GildedRoseContextProvider } from '@/context';
 
-import { Footer, Header, Meta } from '@/components';
-import { GlobalStyles } from '@/components/styles';
+import { AnimationOverlay, Footer, Header, Loader, Meta } from '@/components';
+import { GlobalStyles, Subtitle } from '@/components/styles';
 
 const StyledBody = styled.body`
  background-color: ${({ theme }) => theme.colors.primary};
@@ -21,21 +21,12 @@ const StyledMain = styled.main`
   calc(var(--global-spacing) * 3);
 `;
 
-const StyledAnimationOverlay = styled.div`
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- z-index: 50;
- background-color: ${({ theme }) => theme.colors.secondary};
-`;
-
 export default function RootLayout(props: { children: React.ReactNode }) {
  const [homeTheme, setHomeTheme] = useState(themes.dark);
 
  useEffect(() => {
-  const theme = sessionStorage.getItem('theme');
+  let theme = sessionStorage.getItem('theme');
+  if (!theme) theme = 'dark';
   theme === 'dark' ? setHomeTheme(themes.dark) : setHomeTheme(themes.light);
  }, []);
 
@@ -47,7 +38,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     <GlobalStyles />
     <ThemeProvider theme={homeTheme}>
      <StyledBody>
-      <StyledAnimationOverlay data-animation-overlay> </StyledAnimationOverlay>
+      <AnimationOverlay />
       <Header />
       <StyledMain>
        <GildedRoseContextProvider>{props.children}</GildedRoseContextProvider>
