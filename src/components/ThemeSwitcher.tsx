@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { styled } from 'styled-components';
 import { useThemeStorage } from '@/hooks';
 
@@ -15,6 +17,12 @@ export default function ThemeSwitcher() {
   theme === 'dark' ? setTheme('light') : setTheme('dark');
   location.reload();
  };
+
+ useEffect(() => {
+  let theme = sessionStorage.getItem('theme');
+  if (!theme) theme = 'dark';
+  theme === 'dark' ? setTheme('dark') : setTheme('light');
+ }, []);
 
  return (
   <StyledThemeSwitcher onClick={(e) => handleThemeChange()}>
