@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { RootLayout } from '@/components';
 
 export const metadata: Metadata = {
- title: 'Gilded Rose',
+ title: { default: 'Gilded Rose', template: '%s | Gilded Rose' },
  description:
   'We are a small inn with a prime location. We buy and sell only the finest goods.',
  icons: {
@@ -11,14 +11,16 @@ export const metadata: Metadata = {
   shortcut: '/shortcut-icon.png',
   apple: '/apple-touch-icon.png',
  },
+ themeColor: [
+  { media: '(prefers-color-scheme: light)', color: '#cccccc' },
+  { media: '(prefers-color-scheme: dark)', color: '#222222' },
+ ],
  robots: {
-  index: false,
+  index: true,
   follow: true,
-  nocache: true,
   googleBot: {
    index: true,
-   follow: false,
-   noimageindex: true,
+   follow: true,
    'max-video-preview': -1,
    'max-image-preview': 'large',
    'max-snippet': -1,

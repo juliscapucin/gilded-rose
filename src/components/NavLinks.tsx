@@ -58,7 +58,9 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
  }
 `;
 
-export default function NavLinks({ variant }: { variant: string }) {
+type Props = { variant: string; saleItems?: number; totalItems?: number };
+
+export default function NavLinks({ variant, saleItems, totalItems }: Props) {
  const router = useRouter();
  const pathname = usePathname();
 
@@ -68,22 +70,24 @@ export default function NavLinks({ variant }: { variant: string }) {
  return (
   <StyledNavLinks $variant={variant}>
    <h3>Explore</h3>
-   {navLinks.map((item, index) =>
-    pathname.includes(`${item.href}`) ? (
-     // if href is the same as the current pathname, don't add a link
-     <span className='inactive' key={`span-${index}`}>
-      {item.label}
-     </span>
-    ) : (
-     // if href is different from the current pathname, add a link
-     <NavLink
-      key={`navlink-${index}`}
-      onClick={() => exitPageTransition(() => router.push(item.href))}
-     >
-      {item.label}
-     </NavLink>
-    )
-   )}
+   {navLinks.map((item, index) => (
+    <div key={`navlink-${index}`}>
+     {item.label === 'Sale' && <span>{saleItems}</span>}
+     {item.label === 'Products' && <span>{totalItems}</span>}
+     {/* if href is the same as current pathname, don't add a link */}
+     {pathname.includes(`${item.href}`) ? (
+      <span className='inactive'>{item.label}</span>
+     ) : (
+      // if href is different from the current pathname, add a link
+      <NavLink
+       key={`navlink-${index}`}
+       onClick={() => exitPageTransition(() => router.push(item.href))}
+      >
+       {item.label}
+      </NavLink>
+     )}
+    </div>
+   ))}
   </StyledNavLinks>
  );
 }

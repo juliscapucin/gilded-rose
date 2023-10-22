@@ -36,10 +36,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
    <ThemeProvider theme={homeTheme}>
     <StyledBody>
      <AnimationOverlay />
-     <Header />
-     <StyledMain>
-      <GildedRoseContextProvider>{props.children}</GildedRoseContextProvider>
-     </StyledMain>
+     <GildedRoseContextProvider>
+      <Header />
+      <StyledMain>{props.children}</StyledMain>
+     </GildedRoseContextProvider>
      <Footer />
     </StyledBody>
    </ThemeProvider>
