@@ -8,7 +8,7 @@ import { useGildedRoseContext } from '@/context';
 
 import { breakpoints } from '@/lib/styles-constants';
 import { ButtonBurger, ButtonClose, ButtonLogo } from '@/components/buttons';
-import { NavLinks, ThemeSwitcher } from '@/components';
+import { Navbar, ThemeSwitcher } from '@/components';
 
 const StyledHeader = styled.header<{ $isOpen: boolean; $isHome: boolean }>`
  position: fixed;
@@ -87,7 +87,7 @@ export default function Header() {
    </StyledMobileHeader>
    <StyledHeader $isOpen={isOpen} $isHome={pathname === '/' ? true : false}>
     <ButtonLogo />
-    <NavLinks
+    <Navbar
      variant='header'
      totalItems={allItems?.length}
      saleItems={saleItems?.length}

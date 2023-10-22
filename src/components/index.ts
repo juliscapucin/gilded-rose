@@ -4,7 +4,7 @@ import CustomCursor from './CustomCursor';
 import Footer from './Footer';
 import Header from './Header';
 import Loader from './Loader';
-import NavLinks from './NavLinks';
+import Navbar from './Navbar';
 import ProductCard from './ProductCard';
 import ProductImage from './ProductImage';
 import ProductNotFound from './ProductNotFound';
@@ -20,7 +20,7 @@ export {
    Footer,
    Header,
    Loader,
-   NavLinks,
+   Navbar,
    ProductCard,
    ProductImage,
    ProductNotFound,

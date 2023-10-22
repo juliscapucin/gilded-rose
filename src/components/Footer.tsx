@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { useGildedRoseContext } from '@/context';
 
 import { ButtonLogo } from '@/components/buttons';
-import { NavLinks, SocialLinks } from '@/components';
+import { Navbar, SocialLinks } from '@/components';
 import { breakpoints } from '@/lib/styles-constants';
 
 const StyledFooter = styled.footer`
@@ -29,7 +29,7 @@ export default function Footer() {
 
  return (
   <StyledFooter data-animation-footer>
-   <NavLinks
+   <Navbar
     variant='footer'
     totalItems={allItems?.length}
     saleItems={saleItems?.length}

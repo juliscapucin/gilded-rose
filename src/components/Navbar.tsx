@@ -9,14 +9,14 @@ import { NavLink } from '@/components/styles';
 import { breakpoints } from '@/lib/styles-constants';
 import { useAnimateOnRouteChange } from '@/hooks';
 
-const navLinks = [
+const navbar = [
  { href: '/products', label: 'Products' },
  { href: '/sale', label: 'Sale' },
  { href: '/about', label: 'About' },
  { href: '/contact', label: 'Contact' },
 ];
 
-const StyledNavLinks = styled.nav<{ $variant: string }>`
+const StyledNavbar = styled.nav<{ $variant: string }>`
  display: flex;
  flex-direction: column;
  align-items: ${({ $variant }) =>
@@ -65,8 +65,8 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
 
 const StyledBadge = styled.span`
  position: absolute;
- top: calc(var(--global-spacing) * -1);
- right: calc(var(--global-spacing) * -2);
+ top: calc(var(--global-spacing) * -0.5);
+ right: calc(var(--global-spacing) * -1.5);
  display: flex;
  align-items: center;
  justify-content: center;
@@ -81,7 +81,7 @@ const StyledBadge = styled.span`
 
 type Props = { variant: string; saleItems?: number; totalItems?: number };
 
-export default function NavLinks({ variant, saleItems, totalItems }: Props) {
+export default function Navbar({ variant, saleItems, totalItems }: Props) {
  const router = useRouter();
  const pathname = usePathname();
 
@@ -89,9 +89,9 @@ export default function NavLinks({ variant, saleItems, totalItems }: Props) {
  useAnimateOnRouteChange();
 
  return (
-  <StyledNavLinks $variant={variant}>
+  <StyledNavbar $variant={variant}>
    <h3>Explore</h3>
-   {navLinks.map((item, index) => (
+   {navbar.map((item, index) => (
     <div className='navlink-container' key={`navlink-${index}`}>
      {item.label === 'Sale' && <StyledBadge>{saleItems}</StyledBadge>}
      {item.label === 'Products' && <StyledBadge>{totalItems}</StyledBadge>}
@@ -109,6 +109,6 @@ export default function NavLinks({ variant, saleItems, totalItems }: Props) {
      )}
     </div>
    ))}
-  </StyledNavLinks>
+  </StyledNavbar>
  );
 }
