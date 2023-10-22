@@ -32,7 +32,7 @@ const NavLink = styled.button`
    }
 
    @media (max-width: ${breakpoints.desktop}) {
-      font-size: var(--text-subtitle);
+      font-size: var(--text-large);
    }
 `;
 

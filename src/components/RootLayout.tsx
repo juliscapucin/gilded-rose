@@ -39,8 +39,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
      <GildedRoseContextProvider>
       <Header />
       <StyledMain>{props.children}</StyledMain>
+      <Footer />
      </GildedRoseContextProvider>
-     <Footer />
     </StyledBody>
    </ThemeProvider>
   </StyledComponentsRegistry>

@@ -45,9 +45,10 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
  .inactive {
   position: relative;
   display: inline-block;
+  margin-left: calc(var(--global-spacing) * 0.5);
 
   @media (max-width: ${breakpoints.desktop}) {
-   font-size: var(--text-subtitle);
+   font-size: var(--text-large);
   }
 
   &::before {
@@ -61,6 +62,7 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
   }
  }
 `;
+
 const StyledBadge = styled.span`
  position: absolute;
  top: calc(var(--global-spacing) * -1);
@@ -72,7 +74,7 @@ const StyledBadge = styled.span`
  height: 14px;
  border-radius: 50%;
  background-color: ${({ theme }) => theme.colors.secondary};
- color: ${({ theme }) => theme.colors.primary};
+ color: ${({ theme }) => theme.colors.primary} !important;
  font-size: var(--text-tiny);
  font-weight: 700;
 `;
