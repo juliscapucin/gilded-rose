@@ -5,7 +5,7 @@ import { getInventory } from '@/lib';
 import { Product } from '@/types';
 
 type GildedRoseContextType = {
- inventory: Product[] | null;
+ allItems: Product[] | null;
  newItems: Product[] | null;
  saleItems: Product[] | null;
  updateQuality: () => void;
@@ -31,8 +31,10 @@ export const GildedRoseContextProvider = ({
 }: {
  children: React.ReactNode;
 }) => {
- const [allItems, setAllItems] = useState<Product[]>(getInventory.items);
- const [inventory, setInventory] = useState<Product[] | null>(null);
+ const [inventory, setInventory] = useState<Product[] | null>(
+  getInventory.items
+ );
+ const [allItems, setAllItems] = useState<Product[] | null>(null);
  const [newItems, setNewItems] = useState<Product[] | null>(null);
  const [saleItems, setSaleItems] = useState<Product[] | null>(null);
  const gildedRose = getInventory;
@@ -43,15 +45,17 @@ export const GildedRoseContextProvider = ({
  };
 
  const filterUnavailableItems = () => {
-  const filteredInventory = allItems.filter(
+  // Remove items with sellin <= 0 and quality <= 0
+  const filteredInventory = inventory!.filter(
    (item) => item.sellIn > 0 || item.quality > 0
   );
 
-  setInventory(filteredInventory);
+  setAllItems(filteredInventory);
  };
 
  const filterNewItems = () => {
-  const newItems = inventory!.sort((a, b) => {
+  // Get the first 5 new items
+  const newItems = allItems!.sort((a, b) => {
    // First, compare by sellIn in descending order
    if (b.sellIn !== a.sellIn) {
     return b.sellIn - a.sellIn;
@@ -61,13 +65,12 @@ export const GildedRoseContextProvider = ({
    return b.quality - a.quality;
   });
 
-  // Get the first 5 items
   const first5NewItems = newItems.slice(0, 5);
   setNewItems(first5NewItems);
  };
 
  const filterSaleItems = () => {
-  const saleItems = inventory!.filter(
+  const saleItems = allItems!.filter(
    (item) =>
     item.name !== 'Sulfuras' &&
     !item.name.includes('Backstage') &&
@@ -78,28 +81,22 @@ export const GildedRoseContextProvider = ({
   setSaleItems(saleItems);
  };
 
- // Remove expired items
- useEffect(() => {
-  if (!allItems) return;
-
-  // Remove items with sellin <= 0 and quality <= 0
-  filterUnavailableItems();
- }, [allItems]);
-
- // Get new + sale items
  useEffect(() => {
   if (!inventory) return;
 
-  // New Items (first 5 items sorted by sellIn and quality)
-  filterNewItems();
-
-  // Get Sale Items (items with sellIn <= 2)
-  filterSaleItems();
+  filterUnavailableItems();
  }, [inventory]);
+
+ useEffect(() => {
+  if (!allItems) return;
+
+  filterNewItems();
+  filterSaleItems();
+ }, [allItems]);
 
  return (
   <GildedRoseContext.Provider
-   value={{ inventory, newItems, saleItems, updateQuality }}
+   value={{ allItems, newItems, saleItems, updateQuality }}
   >
    {children}
   </GildedRoseContext.Provider>

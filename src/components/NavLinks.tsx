@@ -38,6 +38,10 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
   margin-left: calc(var(--global-spacing) * 0.5);
  }
 
+ .navlink-container {
+  position: relative;
+ }
+
  .inactive {
   position: relative;
   display: inline-block;
@@ -57,6 +61,21 @@ const StyledNavLinks = styled.nav<{ $variant: string }>`
   }
  }
 `;
+const StyledBadge = styled.span`
+ position: absolute;
+ top: calc(var(--global-spacing) * -1);
+ right: calc(var(--global-spacing) * -2);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 14px;
+ height: 14px;
+ border-radius: 50%;
+ background-color: ${({ theme }) => theme.colors.secondary};
+ color: ${({ theme }) => theme.colors.primary};
+ font-size: var(--text-tiny);
+ font-weight: 700;
+`;
 
 type Props = { variant: string; saleItems?: number; totalItems?: number };
 
@@ -71,9 +90,9 @@ export default function NavLinks({ variant, saleItems, totalItems }: Props) {
   <StyledNavLinks $variant={variant}>
    <h3>Explore</h3>
    {navLinks.map((item, index) => (
-    <div key={`navlink-${index}`}>
-     {item.label === 'Sale' && <span>{saleItems}</span>}
-     {item.label === 'Products' && <span>{totalItems}</span>}
+    <div className='navlink-container' key={`navlink-${index}`}>
+     {item.label === 'Sale' && <StyledBadge>{saleItems}</StyledBadge>}
+     {item.label === 'Products' && <StyledBadge>{totalItems}</StyledBadge>}
      {/* if href is the same as current pathname, don't add a link */}
      {pathname.includes(`${item.href}`) ? (
       <span className='inactive'>{item.label}</span>

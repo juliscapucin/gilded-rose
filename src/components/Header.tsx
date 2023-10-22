@@ -62,7 +62,7 @@ const StyledMobileHeader = styled.div`
 
 export default function Header() {
  const pathname = usePathname();
- const { inventory, saleItems } = useGildedRoseContext();
+ const { allItems, saleItems } = useGildedRoseContext();
  const [isOpen, setIsOpen] = useState(false);
 
  useEffect(() => {
@@ -89,7 +89,7 @@ export default function Header() {
     <ButtonLogo />
     <NavLinks
      variant='header'
-     totalItems={inventory?.length}
+     totalItems={allItems?.length}
      saleItems={saleItems?.length}
     />
     <ThemeSwitcher />

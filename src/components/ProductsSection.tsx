@@ -32,7 +32,7 @@ const ContainerThumbs = styled.section`
 `;
 
 export default function ProductsSection({ variant }: { variant: string }) {
- const { inventory, newItems, saleItems } = useGildedRoseContext();
+ const { allItems, newItems, saleItems } = useGildedRoseContext();
 
  return variant === 'new' ? (
   <>
@@ -48,15 +48,15 @@ export default function ProductsSection({ variant }: { variant: string }) {
   </>
  ) : variant === 'all' ? (
   <>
-   {inventory && (
+   {allItems && (
     // Render all items in products page
     <ContainerThumbs>
-     {inventory.map((item, index) => {
+     {allItems.map((item, index) => {
       return <ProductCard item={item} key={`product-card-${index}`} />;
      })}
     </ContainerThumbs>
    )}
-   {!inventory && <Loader />}
+   {!allItems && <Loader />}
   </>
  ) : (
   variant === 'sale' && (
