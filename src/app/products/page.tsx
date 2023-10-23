@@ -1,15 +1,12 @@
-'use client';
+import { Metadata } from 'next';
 
-import { ProductsSection } from '@/components';
-import { Title } from '@/components/styles';
+import { ProductsPage } from '@/components/pages';
 
-export default function page() {
- return (
-  <div data-animation-page>
-   <Title $margin={true} data-animation-title>
-    Products
-   </Title>
-   <ProductsSection variant={'all'} />
-  </div>
- );
+export const metadata: Metadata = {
+ title: 'Gilded Rose | Products',
+ description: 'We sell only the finest goods.',
+};
+
+export default async function page() {
+ return <ProductsPage />;
 }
