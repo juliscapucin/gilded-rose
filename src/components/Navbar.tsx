@@ -65,17 +65,19 @@ const StyledNavbar = styled.nav<{ $variant: string }>`
 
 const StyledBadge = styled.span`
  position: absolute;
- top: calc(var(--global-spacing) * -0.5);
- right: calc(var(--global-spacing) * -1.5);
+ top: calc(var(--global-spacing) * -0.75);
+ right: calc(var(--global-spacing) * -2);
  display: flex;
  align-items: center;
  justify-content: center;
- width: 14px;
- height: 14px;
+ width: 16px;
+ height: 16px;
  border-radius: 50%;
  background-color: ${({ theme }) => theme.colors.secondary};
  color: ${({ theme }) => theme.colors.primary} !important;
  font-size: var(--text-tiny);
+ letter-spacing: -1px;
+ text-align: left;
  font-weight: 700;
 `;
 

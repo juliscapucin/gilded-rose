@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
    --text-large: 18px;
    --text-medium: 16px;
    --text-small: 14px;
-   --text-tiny: 12px;
+   --text-tiny: 11px;
 
    --font-weight-ultra-light: 100;
    --font-weight-light: 200;

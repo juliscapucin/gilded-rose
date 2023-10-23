@@ -26,8 +26,9 @@ export async function generateMetadata({ params: { slug } }: Params) {
 
 export default async function Page({ params }: { params: { slug: string } }) {
  const { slug } = params;
- const product = getProduct(slug);
- const allProducts = getProducts();
+
+ const product = await getProduct(slug);
+ console.log(product);
 
  if (!product) return notFound();
 
@@ -45,7 +46,11 @@ export async function generateStaticParams() {
  if (!products) return [];
 
  return products?.map((product) => {
-  const productSlug = product.name.replace(/\s+/g, '-').toLowerCase();
+  const productSlug = product.name
+   .toLowerCase()
+   .split(' ')
+   .slice(0, 2)
+   .join('-');
   return productSlug;
  });
 }
