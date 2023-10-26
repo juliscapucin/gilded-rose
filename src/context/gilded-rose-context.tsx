@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { getInventory } from '@/lib';
 import { Product } from '@/types';
 
@@ -37,6 +37,7 @@ export const GildedRoseContextProvider = ({
  const [allItems, setAllItems] = useState<Product[] | null>(null);
  const [newItems, setNewItems] = useState<Product[] | null>(null);
  const [saleItems, setSaleItems] = useState<Product[] | null>(null);
+ const isMounted = useRef(false);
  const gildedRose = getInventory;
 
  const updateQuality = () => {
@@ -44,54 +45,59 @@ export const GildedRoseContextProvider = ({
   setAllItems(updatedItems);
  };
 
- const filterUnavailableItems = () => {
-  // Remove items with sellin <= 0 and quality <= 0
-  const filteredInventory = inventory!.filter(
-   (item) => item.sellIn > 0 || item.quality > 0
-  );
-
-  setAllItems(filteredInventory);
- };
-
- const filterNewItems = () => {
-  // Get the first 5 new items
-  const newItems = allItems!.sort((a, b) => {
-   // First, compare by sellIn in descending order
-   if (b.sellIn !== a.sellIn) {
-    return b.sellIn - a.sellIn;
-   }
-
-   // If sellIn values are equal, compare by quality in descending order
-   return b.quality - a.quality;
-  });
-
-  const first5NewItems = newItems.slice(0, 5);
-  setNewItems(first5NewItems);
- };
-
- const filterSaleItems = () => {
-  const saleItems = allItems!.filter(
-   (item) =>
-    item.name !== 'Sulfuras' &&
-    !item.name.includes('Backstage') &&
-    !item.name.includes('Brie') &&
-    item.sellIn <= 2
-  );
-
-  setSaleItems(saleItems);
- };
-
  useEffect(() => {
-  if (!inventory) return;
+  if (!inventory || isMounted.current) return;
+
+  const filterUnavailableItems = () => {
+   // Remove items with sellin <= 0 and quality <= 0
+   const filteredInventory = inventory!.filter(
+    (item) => item.sellIn > 0 || item.quality > 0
+   );
+
+   setAllItems(filteredInventory);
+  };
 
   filterUnavailableItems();
+  isMounted.current = true;
+
+  console.log('inventory context ran');
  }, [inventory]);
 
  useEffect(() => {
   if (!allItems) return;
 
+  const filterNewItems = () => {
+   // Get the first 5 new items
+   const newItems = allItems!.sort((a, b) => {
+    // First, compare by sellIn in descending order
+    if (b.sellIn !== a.sellIn) {
+     return b.sellIn - a.sellIn;
+    }
+
+    // If sellIn values are equal, compare by quality in descending order
+    return b.quality - a.quality;
+   });
+
+   const first5NewItems = newItems.slice(0, 5);
+   setNewItems(first5NewItems);
+  };
+
+  const filterSaleItems = () => {
+   const saleItems = allItems!.filter(
+    (item) =>
+     item.name !== 'Sulfuras' &&
+     !item.name.includes('Backstage') &&
+     !item.name.includes('Brie') &&
+     item.sellIn <= 2
+   );
+
+   setSaleItems(saleItems);
+  };
+
   filterNewItems();
   filterSaleItems();
+
+  console.log('allItems context ran');
  }, [allItems]);
 
  return (

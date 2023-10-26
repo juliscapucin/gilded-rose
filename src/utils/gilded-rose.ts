@@ -18,8 +18,6 @@ export class GildedRose {
    }
 
    updateQuality() {
-      console.log('updateQuality()');
-
       this.items.map((item) => {
          // Decrease sellIn for all items except Sulfuras
          if (item.name !== 'Sulfuras') {
