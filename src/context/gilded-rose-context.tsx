@@ -1,13 +1,20 @@
 'use client';
 
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import {
+ createContext,
+ useContext,
+ useEffect,
+ useRef,
+ useState,
+ useMemo,
+} from 'react';
 import { getInventory } from '@/lib';
 import { Product } from '@/types';
 
 type GildedRoseContextType = {
  allItems: Product[] | null;
- newItems: Product[] | null;
- saleItems: Product[] | null;
+ newItems: Product[] | undefined;
+ saleItems: Product[] | undefined;
  updateQuality: () => void;
 };
 
@@ -31,12 +38,9 @@ export const GildedRoseContextProvider = ({
 }: {
  children: React.ReactNode;
 }) => {
- const [inventory, setInventory] = useState<Product[] | null>(
-  getInventory.items
- );
+ const inventory = getInventory.items;
+
  const [allItems, setAllItems] = useState<Product[] | null>(null);
- const [newItems, setNewItems] = useState<Product[] | null>(null);
- const [saleItems, setSaleItems] = useState<Product[] | null>(null);
  const isMounted = useRef(false);
  const gildedRose = getInventory;
 
@@ -48,56 +52,45 @@ export const GildedRoseContextProvider = ({
  useEffect(() => {
   if (!inventory || isMounted.current) return;
 
-  const filterUnavailableItems = () => {
-   // Remove items with sellin <= 0 and quality <= 0
-   const filteredInventory = inventory!.filter(
-    (item) => item.sellIn > 0 || item.quality > 0
-   );
+  // Remove items with sellin <= 0 and quality <= 0
+  const filteredInventory = inventory!.filter(
+   (item) => item.sellIn > 0 || item.quality > 0
+  );
 
-   setAllItems(filteredInventory);
-  };
-
-  filterUnavailableItems();
+  setAllItems(filteredInventory);
   isMounted.current = true;
+ }, []);
 
-  console.log('inventory context ran');
- }, [inventory]);
-
- useEffect(() => {
+ const newItems = useMemo(() => {
   if (!allItems) return;
 
-  const filterNewItems = () => {
-   // Get the first 5 new items
-   const newItems = allItems!.sort((a, b) => {
-    // First, compare by sellIn in descending order
-    if (b.sellIn !== a.sellIn) {
-     return b.sellIn - a.sellIn;
-    }
+  // Get the first 5 new items
+  const newItems = allItems!.sort((a, b) => {
+   // First, compare by sellIn in descending order
+   if (b.sellIn !== a.sellIn) {
+    return b.sellIn - a.sellIn;
+   }
 
-    // If sellIn values are equal, compare by quality in descending order
-    return b.quality - a.quality;
-   });
+   // If sellIn values are equal, compare by quality in descending order
+   return b.quality - a.quality;
+  });
 
-   const first5NewItems = newItems.slice(0, 5);
-   setNewItems(first5NewItems);
-  };
+  const first5NewItems = newItems.slice(0, 5);
+  return first5NewItems;
+ }, [allItems]);
 
-  const filterSaleItems = () => {
-   const saleItems = allItems!.filter(
-    (item) =>
-     item.name !== 'Sulfuras' &&
-     !item.name.includes('Backstage') &&
-     !item.name.includes('Brie') &&
-     item.sellIn <= 2
-   );
+ const saleItems = useMemo(() => {
+  if (!allItems) return;
 
-   setSaleItems(saleItems);
-  };
+  const saleItems = allItems!.filter(
+   (item) =>
+    item.name !== 'Sulfuras' &&
+    !item.name.includes('Backstage') &&
+    !item.name.includes('Brie') &&
+    item.sellIn <= 2
+  );
 
-  filterNewItems();
-  filterSaleItems();
-
-  console.log('allItems context ran');
+  return saleItems;
  }, [allItems]);
 
  return (
