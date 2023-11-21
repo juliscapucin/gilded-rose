@@ -19,7 +19,8 @@ const NavLink = styled.button`
       background-color: ${({ theme }) => theme.colors.secondary};
       transform: scaleY(0);
       transform-origin: bottom;
-      transition: transform 0.2s ease-in-out 0s;
+      border-radius: 2px;
+      transition: transform 0.2s ease-in-out;
       z-index: -1;
    }
    &:hover {
@@ -32,7 +33,7 @@ const NavLink = styled.button`
    }
 
    @media (max-width: ${breakpoints.desktop}) {
-      font-size: var(--text-subtitle);
+      font-size: var(--text-large);
    }
 `;
 

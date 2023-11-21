@@ -1,37 +1,56 @@
-'use client';
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
-import { useGildedRoseContext } from '@/context';
+import { getProduct, getProducts } from '@/lib';
+import { ProductPage } from '@/components/pages';
 
-import { ProductImage, ProductNotFound } from '@/components';
-import { Button, Grid, PageContainer, Title } from '@/components/styles';
-import { ButtonBack } from '@/components/buttons';
+type Params = {
+ params: {
+  slug: string;
+ };
+};
 
-export default function Page({ params }: { params: { slug: string } }) {
- const { allItems } = useGildedRoseContext();
- const product = allItems.find((item) => {
-  const productSlug = item.name.toLowerCase().split(' ').slice(0, 2).join('-');
+export async function generateMetadata({ params: { slug } }: Params) {
+ const productName = slug.replaceAll('-', ' ');
+ const product = getProduct(productName);
 
-  if (productSlug === params.slug) return item;
- });
+ if (!product) {
+  return { title: 'Product Not Found', description: 'Product not found' };
+ }
+
+ return {
+  title: product.name,
+  description: `Gilded Rose – ${product.name}`,
+ };
+}
+
+export default async function Page({ params }: { params: { slug: string } }) {
+ const { slug } = params;
+
+ const product = await getProduct(slug);
+ console.log(product);
+
+ if (!product) return notFound();
 
  return (
-  <Grid data-animation-page>
-   {product ? (
-    <>
-     <ButtonBack />
-     <ProductImage productSlug={params.slug} />
-     <PageContainer>
-      <Title $margin={false} data-animation-title>
-       {product?.name}
-      </Title>
-      <p>Sell In: {product?.sellIn}</p>
-      <p>Quality: {product?.quality}</p>
-      <Button $variant='primary'>Buy</Button>
-     </PageContainer>
-    </>
-   ) : (
-    <ProductNotFound />
-   )}
-  </Grid>
+  <Suspense fallback={<h2>Loading...</h2>}>
+   <ProductPage product={product} />;
+  </Suspense>
  );
+}
+
+// SSG – Static Site Generation
+export async function generateStaticParams() {
+ const products = await getProducts();
+
+ if (!products) return [];
+
+ return products?.map((product) => {
+  const productSlug = product.name
+   .toLowerCase()
+   .split(' ')
+   .slice(0, 2)
+   .join('-');
+  return productSlug;
+ });
 }

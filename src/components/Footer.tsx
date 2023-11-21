@@ -2,8 +2,10 @@
 
 import { styled } from 'styled-components';
 
+import { useGildedRoseContext } from '@/context';
+
 import { ButtonLogo } from '@/components/buttons';
-import { NavLinks, SocialLinks } from '@/components';
+import { Navbar, SocialLinks } from '@/components';
 import { breakpoints } from '@/lib/styles-constants';
 
 const StyledFooter = styled.footer`
@@ -23,9 +25,15 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer() {
+ const { allItems, saleItems } = useGildedRoseContext();
+
  return (
   <StyledFooter data-animation-footer>
-   <NavLinks variant='footer' />
+   <Navbar
+    variant='footer'
+    totalItems={allItems?.length}
+    saleItems={saleItems?.length}
+   />
    <SocialLinks />
    <div>
     <ButtonLogo />

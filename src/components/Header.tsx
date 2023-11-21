@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
 
+import { useGildedRoseContext } from '@/context';
+
 import { breakpoints } from '@/lib/styles-constants';
 import { ButtonBurger, ButtonClose, ButtonLogo } from '@/components/buttons';
-import { NavLinks, ThemeSwitcher } from '@/components';
+import { Navbar, ThemeSwitcher } from '@/components';
 
 const StyledHeader = styled.header<{ $isOpen: boolean; $isHome: boolean }>`
  position: fixed;
@@ -59,8 +61,9 @@ const StyledMobileHeader = styled.div`
 `;
 
 export default function Header() {
- const [isOpen, setIsOpen] = useState(false);
  const pathname = usePathname();
+ const { allItems, saleItems } = useGildedRoseContext();
+ const [isOpen, setIsOpen] = useState(false);
 
  useEffect(() => {
   setIsOpen(false);
@@ -84,7 +87,11 @@ export default function Header() {
    </StyledMobileHeader>
    <StyledHeader $isOpen={isOpen} $isHome={pathname === '/' ? true : false}>
     <ButtonLogo />
-    <NavLinks variant='header' />
+    <Navbar
+     variant='header'
+     totalItems={allItems?.length}
+     saleItems={saleItems?.length}
+    />
     <ThemeSwitcher />
    </StyledHeader>
   </>

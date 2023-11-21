@@ -1,21 +1,22 @@
-import { createContext, useContext, useState } from 'react';
-import { Item, GildedRose } from '@/utils/gilded-rose';
+'use client';
+
+import {
+ createContext,
+ useContext,
+ useEffect,
+ useRef,
+ useState,
+ useMemo,
+} from 'react';
+import { getInventory } from '@/lib';
+import { Product } from '@/types';
 
 type GildedRoseContextType = {
- allItems: Item[];
+ allItems: Product[] | null;
+ newItems: Product[] | undefined;
+ saleItems: Product[] | undefined;
  updateQuality: () => void;
 };
-
-const inventory = [
- { name: 'Kebab', sellIn: 10, quality: 20 },
- { name: 'Aged Brie', sellIn: 2, quality: 2 },
- { name: 'Backstage passes to a TAFKAL80ETC concert', sellIn: 1, quality: 15 },
- { name: 'Beverage', sellIn: 12, quality: 20 },
- { name: 'Ramen', sellIn: 1, quality: 2 },
- { name: 'Sulfuras', sellIn: 12, quality: 15 },
- { name: 'Conjured', sellIn: 24, quality: 50 },
- { name: 'Croissant', sellIn: 0, quality: 1 },
-];
 
 // Define the context
 const GildedRoseContext = createContext<GildedRoseContextType | undefined>(
@@ -37,20 +38,65 @@ export const GildedRoseContextProvider = ({
 }: {
  children: React.ReactNode;
 }) => {
- const initialItems = inventory.map(
-  (item) => new Item(item.name, item.sellIn, item.quality)
- );
+ const inventory = getInventory.items;
 
- const [allItems, setAllItems] = useState<Item[]>(initialItems);
- const gildedRose = new GildedRose([...allItems]);
+ const [allItems, setAllItems] = useState<Product[] | null>(null);
+ const isMounted = useRef(false);
+ const gildedRose = getInventory;
 
  const updateQuality = () => {
   const updatedItems = gildedRose.updateQuality();
   setAllItems(updatedItems);
  };
 
+ useEffect(() => {
+  if (!inventory || isMounted.current) return;
+
+  // Remove items with sellin <= 0 and quality <= 0
+  const filteredInventory = inventory!.filter(
+   (item) => item.sellIn > 0 || item.quality > 0
+  );
+
+  setAllItems(filteredInventory);
+  isMounted.current = true;
+ }, []);
+
+ const newItems = useMemo(() => {
+  if (!allItems) return;
+
+  // Get the first 5 new items
+  const newItems = allItems!.sort((a, b) => {
+   // First, compare by sellIn in descending order
+   if (b.sellIn !== a.sellIn) {
+    return b.sellIn - a.sellIn;
+   }
+
+   // If sellIn values are equal, compare by quality in descending order
+   return b.quality - a.quality;
+  });
+
+  const first5NewItems = newItems.slice(0, 5);
+  return first5NewItems;
+ }, [allItems]);
+
+ const saleItems = useMemo(() => {
+  if (!allItems) return;
+
+  const saleItems = allItems!.filter(
+   (item) =>
+    item.name !== 'Sulfuras' &&
+    !item.name.includes('Backstage') &&
+    !item.name.includes('Brie') &&
+    item.sellIn <= 2
+  );
+
+  return saleItems;
+ }, [allItems]);
+
  return (
-  <GildedRoseContext.Provider value={{ allItems, updateQuality }}>
+  <GildedRoseContext.Provider
+   value={{ allItems, newItems, saleItems, updateQuality }}
+  >
    {children}
   </GildedRoseContext.Provider>
  );
