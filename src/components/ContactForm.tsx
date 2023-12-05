@@ -37,6 +37,12 @@ const StyledContactForm = styled.form`
 export default function ContactForm() {
  const [form, setForm] = useState({ name: '', email: '', message: '' });
 
+ const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+ ) => {
+  setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+ };
+
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   alert(`Name: ${form.name}, Email: ${form.email}, Message: ${form.message}`);
@@ -48,28 +54,31 @@ export default function ContactForm() {
     Name:
     <input
      type='text'
+     name='name'
      //   placeholder='Name'
      required
      value={form.name}
-     onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
+     onChange={handleChange}
     />
    </label>
    <label>
     Email:
     <input
      type='email'
+     name='email'
      required
      value={form.email}
-     onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
+     onChange={handleChange}
     />
    </label>
    <label>
     Message:
     <textarea
+     name='message'
      value={form.message}
      required
      rows={5}
-     onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
+     onChange={handleChange}
     />
    </label>
    <Button type='submit' $variant='primary'>
