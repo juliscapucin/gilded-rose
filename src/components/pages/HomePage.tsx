@@ -25,9 +25,9 @@ export default function Home() {
    <StyledHomeHero data-animation-home-hero>
     <Title $margin={true}>Welcome to Gilded Rose.</Title>
     <Subtitle>
-     We are a small inn with a prime location in a prominent city ran by a
-     friendly innkeeper named Allison. We also buy and sell only the finest
-     goods.
+     We are a small inn with a prime location in a prominent city.
+     <br />
+     We also buy and sell only the <br /> finest goods.
     </Subtitle>
    </StyledHomeHero>
    <Grid data-animation-page>
